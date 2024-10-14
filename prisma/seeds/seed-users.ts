@@ -3,7 +3,7 @@ import { Seed } from './abstract/seed.abstract';
 
 export class SeedUsers extends Seed {
     async run(prisma: PrismaClient): Promise<void> {
-        const admin = await prisma.user.upsert({
+        const record = await prisma.user.upsert({
             where: { login: 'admin' },
             update: {},
             create: {
@@ -12,6 +12,6 @@ export class SeedUsers extends Seed {
                 isActive: true,
             },
         });
-        console.log(JSON.stringify(admin));
+        console.log(JSON.stringify(record));
     }
 }
