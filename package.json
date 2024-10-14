@@ -27,6 +27,6 @@
         "@prisma/client": "^5.20.0"
     },
     "prisma": {
-        "seed": "ts-node prisma/seed/seed.ts"
+        "seed": "ts-node prisma/seed.ts"
     }
 }
