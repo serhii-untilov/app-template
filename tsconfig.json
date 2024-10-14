@@ -1,0 +1,4 @@
+{
+    "extends": "@repo/typescript-config/prisma.json",
+    "include": ["prisma"]
+}
