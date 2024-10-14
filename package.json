@@ -6,8 +6,9 @@
         "lint": "turbo lint",
         "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
         "db": "./scripts/docker_db",
-        "migrate:dev": "npm run db && npx prisma migrate dev",
-        "seed": "npm run db && npx prisma db seed"
+        "m:create": "npm run db && npx prisma migrate dev",
+        "m:run": "npm run db && npx prisma migrate deploy",
+        "m:seed": "npm run db && npx prisma db seed"
     },
     "devDependencies": {
         "@types/node": "^22.7.5",
