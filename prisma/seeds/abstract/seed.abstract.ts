@@ -1,5 +1,10 @@
 import { PrismaClient } from '@prisma/client';
 
+export type SeedParams = {
+    prisma: PrismaClient;
+    isLogging: boolean;
+};
+
 export abstract class Seed {
-    abstract run(prisma: PrismaClient): void;
+    abstract run(params: SeedParams): void;
 }

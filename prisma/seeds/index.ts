@@ -1,19 +1,23 @@
 import { PrismaClient } from '@prisma/client';
-import { SeedUsers } from './seeds/seed-users';
+import { SeedUsers } from './lib/seed-users';
 
-const seeds = [new SeedUsers()];
+const isLogging = false;
+const seeds = [
+    // Add the new seeds here, at the end of the list
+    new SeedUsers(),
+];
 
 async function main() {
     // initialize Prisma Client
     const prisma = new PrismaClient();
-    for (let n = 0; n < seeds.length; n++) {
-        seeds[n].run(prisma).catch(async (e) => {
+    for (const seed of seeds) {
+        seed.run({ prisma, isLogging }).catch(async (e) => {
             console.error(e);
             await prisma.$disconnect();
             process.exit(1);
         });
     }
-    console.log('Seed database finished successfully.');
+    console.log('Database seeding was completed successfully.');
     // close Prisma Client at the end
     await prisma.$disconnect();
 }
