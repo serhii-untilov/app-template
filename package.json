@@ -4,6 +4,7 @@
         "build": "turbo build",
         "dev": "npm run db && turbo dev",
         "lint": "turbo lint",
+        "test": "turbo test",
         "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
         "db": "./scripts/docker_db",
         "m:create": "npm run db && npx prisma migrate dev",
