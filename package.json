@@ -9,7 +9,9 @@
         "db": "./scripts/docker_db",
         "m:create": "npm run db && npx prisma migrate dev",
         "m:run": "npm run db && npx prisma migrate deploy",
-        "m:seed": "npm run db && npx prisma db seed"
+        "m:seed": "npm run db && npx prisma db seed",
+        "generate-prisma-client": "npx prisma migrate dev",
+        "codegen": "npm run generate-prisma-client"
     },
     "devDependencies": {
         "@types/node": "^22.7.5",
