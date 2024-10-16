@@ -3,8 +3,8 @@
 ## Apps and Packages
 
 - `api`: a [NestJS](https://nestjs.com/) backend application
-- `web`: a [vite](https://vitejs.dev) ts frontend app
-- `docs`: another [vite](https://vitejs.dev) ts frontend app
+- `web`: a [vite](https://vitejs.dev) ts frontend application
+- `docs`: another [vite](https://vitejs.dev) ts frontend application
 - `@repo/ui`: a stub component & utility library shared by both `web` and `docs` applications
 - `@repo/eslint-config`: shared `eslint` configurations
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
