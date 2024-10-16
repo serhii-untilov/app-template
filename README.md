@@ -13,7 +13,7 @@
 
 ### Start
 
-``` bash
+```bash
 mkdir app-template
 cd app-template
 
@@ -38,7 +38,7 @@ npm i --workspace api --save @nestjs/serve-static
 
 ## Init DBMS
 
-``` bash
+```bash
 npm i --workspace api --save-dev prisma
 npx prisma
 npx prisma init --datasource-provider postgresql
@@ -49,16 +49,16 @@ npx prisma migrate dev
 
 ## Backend
 
-``` bash
-npx nest generate module prisma
-npx nest generate service prisma
-npx nest generate module prisma apps/auth/src
-npx nest generate service prisma apps/auth/src
+```bash
+npx --workspace api nest g module prisma
+npx --workspace api nest g service prisma
+npx --workspace api nest g module prisma apps/auth/src
+npx --workspace api nest g service prisma apps/auth/src
 ```
 
 ## Frontend
 
-``` bash
+```bash
 
 
 ```
@@ -113,7 +113,7 @@ npx nest generate service prisma apps/auth/src
 - [**Redux** - Getting Started with React Redux](https://react-redux.js.org/introduction/getting-started)
 - [**Backup** - Docker Postgres Backup/Restore Guide (with examples)](https://simplebackups.com/blog/docker-postgres-backup-restore-guide-with-examples/#before-you-begin)
 - [**React Hook Form** - Combined Add/Edit (Create/Update) Form Example](https://jasonwatmore.com/post/2020/10/14/react-hook-form-combined-add-edit-create-update-form-example)
-- [**ESLint** - ESLint no-unused-vars: _ ignore prefix](https://johnnyreilly.com/typescript-eslint-no-unused-vars)
+- [**ESLint** - ESLint no-unused-vars: \_ ignore prefix](https://johnnyreilly.com/typescript-eslint-no-unused-vars)
 - [**TypeScript** - How to Remove a Property from an Object in TypeScript](https://bobbyhadz.com/blog/typescript-object-remove-property)
 - [**Yup** - Schema builder for runtime value parsing and validation](https://yup-docs.vercel.app/docs/intro)
 - [**React** - Path To A Clean(er) React Architecture](https://profy.dev/article/react-architecture-api-client)
