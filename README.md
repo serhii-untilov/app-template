@@ -50,6 +50,8 @@ npx prisma migrate dev
 ## Backend
 
 ``` bash
+npx nest generate module prisma
+npx nest generate service prisma
 npx nest generate module prisma apps/auth/src
 npx nest generate service prisma apps/auth/src
 ```
