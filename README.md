@@ -54,6 +54,9 @@ npx --workspace api nest g module prisma
 npx --workspace api nest g service prisma
 npx --workspace api nest g module prisma apps/auth/src
 npx --workspace api nest g service prisma apps/auth/src
+npm i --workspace api --save @nestjs/swagger swagger-ui-express
+npm i --workspace api --save @nestjs/config
+npm i --workspace api --save helmet
 ```
 
 ## Frontend
