@@ -1,0 +1,26 @@
+{
+    "name": "@repo/prisma-client",
+    "license": "MIT",
+    "private": true,
+    "main": "./dist/prisma-client.js",
+    "exports": {
+        ".": {
+            "import": "./src/prisma-client.ts",
+            "require": "./dist/prisma-client.js",
+            "node": "./dist/prisma-client.js",
+            "default": "./src/prisma-client.ts"
+        }
+    },
+    "types": "./src/prisma-client.ts",
+    "scripts": {
+        "build": "NODE_ENV=production tsc",
+        "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+        "format": "prettier --write \"src/**/*.ts\"",
+        "test": "NODE_ENV=development jest --passWithNoTests",
+        "test:watch": "NODE_ENV=development jest --watch"
+    },
+    "devDependencies": {
+        "@repo/typescript-config": "*",
+        "typescript": "latest"
+    }
+}

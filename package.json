@@ -11,7 +11,7 @@
         "m:run": "npm run db && npx prisma migrate deploy",
         "m:seed": "npm run db && npx prisma db seed",
         "generate-prisma-client": "npx prisma migrate dev",
-        "codegen": "npm run generate-prisma-client"
+        "codegen": "npm run db && npm run generate-prisma-client"
     },
     "devDependencies": {
         "@types/node": "^22.7.5",
