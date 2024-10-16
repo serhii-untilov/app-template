@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { SeedUsers } from './lib/seed-users';
+import { SeedUsers } from './seed-users';
 
 const isLogging = false;
 const seeds = [

@@ -1,4 +1,4 @@
-import { Seed, SeedParams } from '../abstract/seed.abstract';
+import { Seed, SeedParams } from './seed.abstract';
 
 const records = [
     {
