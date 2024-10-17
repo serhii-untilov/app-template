@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ConfigModule } from '@nestjs/config';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
-import { ConfigModule } from '@nestjs/config';
-import { appConfig, authConfig, googleConfig } from '../config';
+import 'reflect-metadata';
+import { appConfig, authConfig, googleConfig } from './config';
+import { ErrorsInterceptor } from './interceptors/errors.interceptor';
+import { UsersModule } from './resources/users/users.module';
 
 @Module({
     imports: [
@@ -19,8 +21,14 @@ import { appConfig, authConfig, googleConfig } from '../config';
             rootPath: join(__dirname, '../../..', 'web', 'dist'),
             exclude: ['/api/(.*)'],
         }),
+        UsersModule,
     ],
-    controllers: [AppController],
-    providers: [AppService],
+    controllers: [],
+    providers: [
+        {
+            provide: APP_INTERCEPTOR,
+            useClass: ErrorsInterceptor,
+        },
+    ],
 })
 export class AppModule {}

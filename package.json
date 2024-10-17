@@ -6,14 +6,16 @@
         "lint": "turbo lint",
         "test": "turbo test",
         "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+        "deploy": "turbo deploy",
         "db": "./scripts/docker_db",
         "m:create": "npm run db && npx prisma migrate dev",
         "m:run": "npm run db && npx prisma migrate deploy",
         "m:seed": "npm run db && npx prisma db seed",
         "generate-prisma-client": "npx prisma migrate dev",
-        "codegen": "npm run generate-prisma-client"
+        "codegen": "npm run db && npm run generate-prisma-client && turbo codegen && ./scripts/generate_dto"
     },
     "devDependencies": {
+        "@openapitools/openapi-generator-cli": "^2.14.0",
         "@types/node": "^22.7.5",
         "eslint": "^8.57.0",
         "prettier": "^3.2.5",

@@ -47,6 +47,13 @@ npx prisma init --datasource-provider postgresql
 npx prisma migrate dev
 ```
 
+## Common packages
+
+``` bash
+npm i @openapitools/openapi-generator-cli -D
+npm i --workspace @repo/openapi --save-dev eslint-plugin-no-loops@latest
+```
+
 ## Backend
 
 ```bash
@@ -57,6 +64,11 @@ npx --workspace api nest g service prisma apps/auth/src
 npm i --workspace api --save @nestjs/swagger swagger-ui-express
 npm i --workspace api --save @nestjs/config
 npm i --workspace api --save helmet
+npx --workspace api nest g resource users resources
+npm i --workspace api --save @repo/prisma-client
+npm i --workspace api --save class-transformer reflect-metadata
+npm i --workspace api --save @repo/shared
+npm i --workspace api --save jest-mock-extended
 ```
 
 ## Frontend
@@ -74,6 +86,8 @@ npm i --workspace api --save helmet
 - [**Prettier** - code formatting](https://prettier.io)
 - [**Nest** - Building a REST API with NestJS, Prisma, Postgres, Swagger](https://www.prisma.io/blog/nestjs-prisma-rest-api-7D056s1BmOL0)
 - [**Prisma** - Prisma Docs](https://www.prisma.io/docs/orm/prisma-migrate)
+- [**Prisma** - How to do Prisma soft delete with NestJS](https://stackoverflow.com/questions/73189707/how-to-do-prisma-soft-delete-with-nestjs)
+- [**Prisma** - Implementing Soft Delete in Prisma using Client Extensions: A Step-by-Step Guide for Nestjs](https://medium.com/@erciliomarquesmanhica/implementing-soft-delete-in-prisma-using-client-extensions-a-step-by-step-guide-for-nestjs-51a9d0716831)
 - [**Turborepo** - Add Turborepo to your existing monorepo](https://turbo.build/repo/docs/getting-started/existing-monorepo)
 - [**Commits** - Conventional Commits](https://www.conventionalcommits.org)
 - [**NestJS** - Combine a NestJS app with React](https://youtu.be/nY0R7pslbCI?si=Lunb95j6enSY8GXE)

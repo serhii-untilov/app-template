@@ -1,18 +1,15 @@
 module.exports = {
+    root: true,
     parser: '@typescript-eslint/parser',
+    plugins: ['@typescript-eslint/eslint-plugin', 'no-loops', 'prettier'],
+    env: { node: true, jest: true },
+    ignorePatterns: ['dist', '.eslintrc.js'],
+    extends: ['plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended', 'prettier'],
     parserOptions: {
         project: 'tsconfig.json',
         tsconfigRootDir: __dirname,
         sourceType: 'module',
     },
-    plugins: ['@typescript-eslint/eslint-plugin', 'no-loops'],
-    extends: ['plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
-    root: true,
-    env: {
-        node: true,
-        jest: true,
-    },
-    ignorePatterns: ['.eslintrc.js'],
     rules: {
         '@typescript-eslint/interface-name-prefix': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',
@@ -31,15 +28,6 @@ module.exports = {
                 destructuredArrayIgnorePattern: '^_',
                 varsIgnorePattern: '^_',
                 ignoreRestSiblings: true,
-            },
-        ],
-        'max-len': [
-            'error',
-            {
-                code: 100,
-                ignoreTemplateLiterals: true,
-                ignoreStrings: true,
-                ignoreUrls: true,
             },
         ],
     },

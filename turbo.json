@@ -2,9 +2,16 @@
     "$schema": "https://turbo.build/schema.json",
     "tasks": {
         "build": {
-            "dependsOn": ["^build"],
-            "inputs": ["$TURBO_DEFAULT$", ".env*"],
-            "outputs": ["dist/**"]
+            "dependsOn": [
+                "^build"
+            ],
+            "inputs": [
+                "$TURBO_DEFAULT$",
+                ".env*"
+            ],
+            "outputs": [
+                "dist/**"
+            ]
         },
         "lint": {},
         "format": {},
@@ -13,8 +20,18 @@
             "cache": false,
             "persistent": true
         },
+        "deploy": {
+            "dependsOn": [
+                "build",
+                "test",
+                "lint"
+            ]
+        },
+        "codegen": {},
         "start": {
-            "dependsOn": ["build"]
+            "dependsOn": [
+                "build"
+            ]
         }
     }
 }

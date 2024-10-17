@@ -1,25 +1,22 @@
 module.exports = {
+    root: true,
     parser: '@typescript-eslint/parser',
+    plugins: ['@typescript-eslint/eslint-plugin', 'prettier'],
+    env: { node: true, jest: true },
+    ignorePatterns: ['dist', '.eslintrc.js'],
+    extends: ['plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended', 'prettier'],
     parserOptions: {
         project: 'tsconfig.json',
         tsconfigRootDir: __dirname,
         sourceType: 'module',
     },
-    plugins: ['@typescript-eslint/eslint-plugin', 'no-loops'],
-    extends: ['plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
-    root: true,
-    env: {
-        node: true,
-        jest: true,
-    },
-    ignorePatterns: ['.eslintrc.js'],
     rules: {
         '@typescript-eslint/interface-name-prefix': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
         'no-console': 'warn',
-        'no-loops/no-loops': 'warn',
+        // 'no-loops/no-loops': 'warn',
         'prettier/prettier': 'warn',
         '@typescript-eslint/no-unused-vars': [
             'error',
@@ -33,14 +30,6 @@ module.exports = {
                 ignoreRestSiblings: true,
             },
         ],
-        'max-len': [
-            'error',
-            {
-                code: 100,
-                ignoreTemplateLiterals: true,
-                ignoreStrings: true,
-                ignoreUrls: true,
-            },
-        ],
+        'max-len': ['error', { code: 100, ignoreComments: true }],
     },
 };
