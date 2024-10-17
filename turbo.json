@@ -20,6 +20,13 @@
             "cache": false,
             "persistent": true
         },
+        "deploy": {
+            "dependsOn": [
+                "build",
+                "test",
+                "lint"
+            ]
+        },
         "codegen": {},
         "start": {
             "dependsOn": [

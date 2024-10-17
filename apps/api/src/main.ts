@@ -4,8 +4,6 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
 import { Logger, VersioningType } from '@nestjs/common';
 import helmet from 'helmet';
-// import 'reflect-metadata';
-// import metadata from './metadata';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
@@ -16,6 +14,8 @@ async function bootstrap() {
     const configService = app.get(ConfigService);
     // set up versioning
     app.enableVersioning({ type: VersioningType.URI, prefix: 'v' });
+    // TODO - revisit and secure this!
+    // app.enableCors({ origin: '*' });
     const title = configService.get<string>('app.title');
 
     // handle Swagger
@@ -24,7 +24,6 @@ async function bootstrap() {
         .setVersion('1.0')
         .addBearerAuth()
         .build();
-    // await SwaggerModule.loadPluginMetadata(metadata);
     const document = SwaggerModule.createDocument(app, config);
     const apiVersion = 'v1';
     const apiFileName = 'swagger';

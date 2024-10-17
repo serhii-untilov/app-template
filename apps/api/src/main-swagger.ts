@@ -5,9 +5,8 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { capitalizeFirstLetter } from '@repo/shared';
 import { writeFileSync } from 'fs';
 import { resolve } from 'path';
+// import 'reflect-metadata';
 import { AppModule } from './app.module';
-import 'reflect-metadata';
-// import metadata from './metadata';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
@@ -16,20 +15,15 @@ async function bootstrap() {
     const configService = app.get(ConfigService);
     // set up versioning
     app.enableVersioning({ type: VersioningType.URI, prefix: 'v' });
-    // TODO - revisit and secure this!
-    // app.enableCors({ origin: '*' });
     const title = configService.get<string>('app.title');
 
     // handle Swagger
     const config = new DocumentBuilder()
         .setTitle(`${title} REST API`)
         .setVersion('1.0')
-        // .addTag('payrollSmb')
         .addBearerAuth()
         .build();
-    // await SwaggerModule.loadPluginMetadata(metadata);
     const document = SwaggerModule.createDocument(app, config, {
-        // extraModels: [Logger],
         operationIdFactory: (controllerKey, methodKey) =>
             `${controllerKey}${capitalizeFirstLetter(methodKey)}`.replace('Controller', ''),
     });

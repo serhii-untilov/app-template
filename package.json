@@ -6,6 +6,7 @@
         "lint": "turbo lint",
         "test": "turbo test",
         "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+        "deploy": "turbo deploy",
         "db": "./scripts/docker_db",
         "m:create": "npm run db && npx prisma migrate dev",
         "m:run": "npm run db && npx prisma migrate deploy",

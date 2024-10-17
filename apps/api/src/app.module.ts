@@ -4,8 +4,6 @@ import { APP_INTERCEPTOR } from '@nestjs/core';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import 'reflect-metadata';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { appConfig, authConfig, googleConfig } from './config';
 import { ErrorsInterceptor } from './interceptors/errors.interceptor';
 import { UsersModule } from './resources/users/users.module';
@@ -25,9 +23,8 @@ import { UsersModule } from './resources/users/users.module';
         }),
         UsersModule,
     ],
-    controllers: [AppController],
+    controllers: [],
     providers: [
-        AppService,
         {
             provide: APP_INTERCEPTOR,
             useClass: ErrorsInterceptor,

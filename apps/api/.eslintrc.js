@@ -5,7 +5,7 @@ module.exports = {
         tsconfigRootDir: __dirname,
         sourceType: 'module',
     },
-    plugins: ['@typescript-eslint/eslint-plugin'],
+    plugins: ['@typescript-eslint/eslint-plugin', 'no-loops'],
     extends: ['plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
     root: true,
     env: {
@@ -19,7 +19,7 @@ module.exports = {
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
         'no-console': 'warn',
-        // 'no-loops/no-loops': 'warn',
+        'no-loops/no-loops': 'warn',
         'prettier/prettier': 'warn',
         '@typescript-eslint/no-unused-vars': [
             'error',
