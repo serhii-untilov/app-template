@@ -47,6 +47,13 @@ npx prisma init --datasource-provider postgresql
 npx prisma migrate dev
 ```
 
+## Common packages
+
+``` bash
+npm i @openapitools/openapi-generator-cli -D
+npm i --workspace @repo/openapi --save-dev eslint-plugin-no-loops@latest
+```
+
 ## Backend
 
 ```bash
@@ -60,6 +67,8 @@ npm i --workspace api --save helmet
 npx --workspace api nest g resource users resources
 npm i --workspace api --save @repo/prisma-client
 npm i --workspace api --save class-transformer reflect-metadata
+npm i --workspace api --save @repo/shared
+npm i --workspace api --save jest-mock-extended
 ```
 
 ## Frontend

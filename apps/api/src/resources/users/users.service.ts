@@ -7,27 +7,27 @@ import { PrismaService } from '../../prisma/prisma.service';
 export class UsersService {
     constructor(private prisma: PrismaService) {}
 
-    create(createUserDto: CreateUserDto) {
-        return this.prisma.user.create({ data: createUserDto });
+    async create(createUserDto: CreateUserDto) {
+        return await this.prisma.user.create({ data: createUserDto });
     }
 
-    findAll() {
-        return this.prisma.user.findMany({ where: { isActive: true } });
+    async findAll() {
+        return await this.prisma.user.findMany({ where: { isActive: true } });
     }
 
-    findInactive() {
-        return this.prisma.user.findMany({ where: { isActive: false } });
+    async findInactive() {
+        return await this.prisma.user.findMany({ where: { isActive: false } });
     }
 
-    findOne(id: number) {
-        return this.prisma.user.findUnique({ where: { id } });
+    async findOne(id: number) {
+        return await this.prisma.user.findUnique({ where: { id } });
     }
 
-    update(id: number, updateUserDto: UpdateUserDto) {
-        return this.prisma.user.update({ where: { id }, data: updateUserDto });
+    async update(id: number, updateUserDto: UpdateUserDto) {
+        return await this.prisma.user.update({ where: { id }, data: updateUserDto });
     }
 
-    remove(id: number) {
-        return this.prisma.user.delete({ where: { id } });
+    async remove(id: number) {
+        return await this.prisma.user.delete({ where: { id } });
     }
 }
