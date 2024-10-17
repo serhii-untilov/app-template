@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ConfigService } from '@nestjs/config';
-import { Logger, VersioningType } from '@nestjs/common';
+import { Logger, ValidationPipe, VersioningType } from '@nestjs/common';
 import helmet from 'helmet';
 
 async function bootstrap() {
@@ -11,6 +11,7 @@ async function bootstrap() {
     const globalPrefix = 'api';
     const logger = new Logger(bootstrap.name);
     app.setGlobalPrefix(globalPrefix);
+    app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
     const configService = app.get(ConfigService);
     // set up versioning
     app.enableVersioning({ type: VersioningType.URI, prefix: 'v' });

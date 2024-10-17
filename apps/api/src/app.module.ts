@@ -1,6 +1,6 @@
-import { Module } from '@nestjs/common';
+import { Module, ValidationPipe } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { APP_INTERCEPTOR } from '@nestjs/core';
+import { APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import 'reflect-metadata';
@@ -25,6 +25,10 @@ import { UsersModule } from './resources/users/users.module';
     ],
     controllers: [],
     providers: [
+        {
+            provide: APP_PIPE,
+            useClass: ValidationPipe,
+        },
         {
             provide: APP_INTERCEPTOR,
             useClass: ErrorsInterceptor,
