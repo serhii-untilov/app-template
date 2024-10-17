@@ -5,6 +5,7 @@ import {
     Delete,
     Get,
     Param,
+    ParseIntPipe,
     Patch,
     Post,
     UseInterceptors,
@@ -43,21 +44,21 @@ export class UsersController {
     @Get(':id')
     @ApiOkResponse({ type: UserEntity })
     @UseInterceptors(ClassSerializerInterceptor)
-    async findOne(@Param('id') id: string) {
-        return new UserEntity(await this.usersService.findOne(+id));
+    async findOne(@Param('id', ParseIntPipe) id: number) {
+        return new UserEntity(await this.usersService.findOne(id));
     }
 
     @Patch(':id')
     @ApiOkResponse({ type: UserEntity })
     @UseInterceptors(ClassSerializerInterceptor)
-    async update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-        return new UserEntity(await this.usersService.update(+id, updateUserDto));
+    async update(@Param('id', ParseIntPipe) id: number, @Body() updateUserDto: UpdateUserDto) {
+        return new UserEntity(await this.usersService.update(id, updateUserDto));
     }
 
     @Delete(':id')
     @ApiOkResponse({ type: UserEntity })
     @UseInterceptors(ClassSerializerInterceptor)
-    async remove(@Param('id') id: string) {
-        return new UserEntity(await this.usersService.remove(+id));
+    async remove(@Param('id', ParseIntPipe) id: number) {
+        return new UserEntity(await this.usersService.remove(id));
     }
 }
