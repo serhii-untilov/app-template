@@ -7,6 +7,7 @@ import { join } from 'path';
 import 'reflect-metadata';
 import { appConfig, authConfig, googleConfig } from './config';
 import { UsersModule } from './resources/users/users.module';
+import { HttpExceptionFilter } from './filters/http-exception/http-exception.filter';
 
 @Module({
     imports: [
@@ -35,6 +36,10 @@ import { UsersModule } from './resources/users/users.module';
                 return new PrismaClientExceptionFilter(httpAdapter);
             },
             inject: [HttpAdapterHost],
+        },
+        {
+            provide: APP_FILTER,
+            useClass: HttpExceptionFilter,
         },
     ],
 })

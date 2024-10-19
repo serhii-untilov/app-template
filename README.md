@@ -71,6 +71,8 @@ npm i --workspace api --save @repo/shared
 npm i --workspace api --save jest-mock-extended
 npm i --workspace api --save class-validator class-transformer
 npm i --workspace api --save nestjs-prisma
+npx --workspace api nest g filter http-exception filters
+npx --workspace api nest g filter prisma-client-exception filters
 ```
 
 ## Frontend
