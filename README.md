@@ -70,6 +70,7 @@ npm i --workspace api --save class-transformer reflect-metadata
 npm i --workspace api --save @repo/shared
 npm i --workspace api --save jest-mock-extended
 npm i --workspace api --save class-validator class-transformer
+npm i --workspace api --save nestjs-prisma
 ```
 
 ## Frontend
@@ -82,17 +83,20 @@ npm i --workspace api --save class-validator class-transformer
 ## References
 
 - [**Web apps development methodology** - The Twelve-Factor App](https://12factor.net)
+- [**Turborepo** - Add Turborepo to your existing monorepo](https://turbo.build/repo/docs/getting-started/existing-monorepo)
 - [**TypeScript** - Static type checking](https://www.typescriptlang.org/)
 - [**ESLint** - Code linting](https://eslint.org/)
 - [**Prettier** - code formatting](https://prettier.io)
-- [**NestJS** - Building a REST API with NestJS, Prisma, Postgres, Swagger](https://www.prisma.io/blog/nestjs-prisma-rest-api-7D056s1BmOL0)
+- [**Commits** - Conventional Commits](https://www.conventionalcommits.org)
 - [**Prisma** - Prisma Docs](https://www.prisma.io/docs/orm/prisma-migrate)
+- [**Prisma** - Building a REST API with NestJS, Prisma, Postgres, Swagger](https://www.prisma.io/blog/nestjs-prisma-rest-api-7D056s1BmOL0)
+- [**Prisma** - Building a REST API with NestJS and Prisma: Input Validation & Transformation](https://www.prisma.io/blog/nestjs-prisma-validation-7D056s1kOla1)
+- [**Prisma** - Building a REST API with NestJS and Prisma: Error Handling](https://www.prisma.io/blog/nestjs-prisma-error-handling-7D056s1kOop2)
+- [**Prisma** - https://www.prisma.io/blog/nestjs-prisma-relational-data-7D056s1kOabc](https://www.prisma.io/blog/nestjs-prisma-relational-data-7D056s1kOabc)
+- [**Prisma** - Building a REST API with NestJS and Prisma: Authentication](https://www.prisma.io/blog/nestjs-prisma-authentication-7D056s1s0k3l)
 - [**Prisma** - How to do Prisma soft delete with NestJS](https://stackoverflow.com/questions/73189707/how-to-do-prisma-soft-delete-with-nestjs)
 - [**Prisma** - Implementing Soft Delete in Prisma using Client Extensions: A Step-by-Step Guide for Nestjs](https://medium.com/@erciliomarquesmanhica/implementing-soft-delete-in-prisma-using-client-extensions-a-step-by-step-guide-for-nestjs-51a9d0716831)
-- [**NestJS** - Input Validation & Transformation - Pipes](https://www.prisma.io/blog/nestjs-prisma-validation-7D056s1kOla1)
 - [**NestJS** - Custom pipes](https://docs.nestjs.com/pipes#custom-pipes)
-- [**Turborepo** - Add Turborepo to your existing monorepo](https://turbo.build/repo/docs/getting-started/existing-monorepo)
-- [**Commits** - Conventional Commits](https://www.conventionalcommits.org)
 - [**NestJS** - Combine a NestJS app with React](https://youtu.be/nY0R7pslbCI?si=Lunb95j6enSY8GXE)
 - [**Vite** - Server Proxy](https://vitejs.dev/config/server-options#server-proxy)
 - [**NestJS** - Serve Static](https://docs.nestjs.com/recipes/serve-static)

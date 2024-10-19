@@ -1,9 +1,10 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { ConfigService } from '@nestjs/config';
 import { Logger, ValidationPipe, VersioningType } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { HttpAdapterHost, NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import helmet from 'helmet';
+import { PrismaClientExceptionFilter } from 'nestjs-prisma';
+import { AppModule } from './app.module';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
@@ -32,6 +33,10 @@ async function bootstrap() {
         jsonDocumentUrl: `${globalPrefix}/${apiVersion}/${apiFileName}.json`,
         yamlDocumentUrl: `${globalPrefix}/${apiVersion}/${apiFileName}.yaml`,
     });
+
+    // Handle Prisma client exceptions
+    const { httpAdapter } = app.get(HttpAdapterHost);
+    app.useGlobalFilters(new PrismaClientExceptionFilter(httpAdapter));
 
     // Run API
     const host = configService.get<string>('app.host');
