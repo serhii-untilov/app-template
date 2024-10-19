@@ -12,15 +12,39 @@ export class UsersService {
     }
 
     async findAll() {
-        return await this.prisma.user.findMany({ where: { isActive: true } });
+        return await this.prisma.user.findMany({
+            where: { isActive: true, deletedAt: null },
+            include: {
+                roles: { select: { role: true } },
+            },
+        });
     }
 
     async findInactive() {
-        return await this.prisma.user.findMany({ where: { isActive: false } });
+        return await this.prisma.user.findMany({
+            where: { isActive: false, deletedAt: null },
+            include: {
+                roles: { select: { role: true } },
+            },
+        });
+    }
+
+    async findRemoved() {
+        return await this.prisma.user.findMany({
+            where: { NOT: { deletedAt: null } },
+            include: {
+                roles: { select: { role: true } },
+            },
+        });
     }
 
     async findOne(id: number) {
-        return await this.prisma.user.findUniqueOrThrow({ where: { id } });
+        return await this.prisma.user.findUniqueOrThrow({
+            where: { id },
+            include: {
+                roles: true,
+            },
+        });
     }
 
     async update(id: number, updateUserDto: UpdateUserDto) {
@@ -28,6 +52,20 @@ export class UsersService {
     }
 
     async remove(id: number) {
-        return await this.prisma.user.delete({ where: { id } });
+        return await this.prisma.user.update({
+            where: { id, deletedAt: null },
+            data: { deletedAt: new Date() },
+        });
+    }
+
+    async restore(id: number) {
+        return await this.prisma.user.update({
+            where: { id, deletedAt: { not: null } },
+            data: { deletedAt: null },
+        });
+    }
+
+    async delete(id: number) {
+        return await this.prisma.user.delete({ where: { id, deletedAt: { not: null } } });
     }
 }

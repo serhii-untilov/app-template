@@ -139,6 +139,12 @@ export interface UserEntity {
     login: string;
     /**
      *
+     * @type {Array<string>}
+     * @memberof UserEntity
+     */
+    roles: Array<string>;
+    /**
+     *
      * @type {string}
      * @memberof UserEntity
      */
@@ -179,6 +185,12 @@ export interface UserEntity {
      * @memberof UserEntity
      */
     deletedAt: Date;
+    /**
+     *
+     * @type {number}
+     * @memberof UserEntity
+     */
+    version: number;
 }
 
 /**
@@ -298,12 +310,12 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          *
-         * @param {string} id
+         * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         usersFindOne: async (
-            id: string,
+            id: number,
             options: RawAxiosRequestConfig = {},
         ): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
@@ -339,12 +351,12 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          *
-         * @param {string} id
+         * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         usersRemove: async (
-            id: string,
+            id: number,
             options: RawAxiosRequestConfig = {},
         ): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
@@ -380,13 +392,13 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          *
-         * @param {string} id
+         * @param {number} id
          * @param {UpdateUserDto} updateUserDto
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         usersUpdate: async (
-            id: string,
+            id: number,
             updateUserDto: UpdateUserDto,
             options: RawAxiosRequestConfig = {},
         ): Promise<RequestArgs> => {
@@ -508,12 +520,12 @@ export const UsersApiFp = function (configuration?: Configuration) {
         },
         /**
          *
-         * @param {string} id
+         * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         async usersFindOne(
-            id: string,
+            id: number,
             options?: RawAxiosRequestConfig,
         ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserEntity>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.usersFindOne(id, options);
@@ -530,12 +542,12 @@ export const UsersApiFp = function (configuration?: Configuration) {
         },
         /**
          *
-         * @param {string} id
+         * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         async usersRemove(
-            id: string,
+            id: number,
             options?: RawAxiosRequestConfig,
         ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserEntity>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.usersRemove(id, options);
@@ -552,13 +564,13 @@ export const UsersApiFp = function (configuration?: Configuration) {
         },
         /**
          *
-         * @param {string} id
+         * @param {number} id
          * @param {UpdateUserDto} updateUserDto
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         async usersUpdate(
-            id: string,
+            id: number,
             updateUserDto: UpdateUserDto,
             options?: RawAxiosRequestConfig,
         ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserEntity>> {
@@ -626,31 +638,31 @@ export const UsersApiFactory = function (
         },
         /**
          *
-         * @param {string} id
+         * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersFindOne(id: string, options?: RawAxiosRequestConfig): AxiosPromise<UserEntity> {
+        usersFindOne(id: number, options?: RawAxiosRequestConfig): AxiosPromise<UserEntity> {
             return localVarFp.usersFindOne(id, options).then((request) => request(axios, basePath));
         },
         /**
          *
-         * @param {string} id
+         * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        usersRemove(id: string, options?: RawAxiosRequestConfig): AxiosPromise<UserEntity> {
+        usersRemove(id: number, options?: RawAxiosRequestConfig): AxiosPromise<UserEntity> {
             return localVarFp.usersRemove(id, options).then((request) => request(axios, basePath));
         },
         /**
          *
-         * @param {string} id
+         * @param {number} id
          * @param {UpdateUserDto} updateUserDto
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         usersUpdate(
-            id: string,
+            id: number,
             updateUserDto: UpdateUserDto,
             options?: RawAxiosRequestConfig,
         ): AxiosPromise<UserEntity> {
@@ -707,12 +719,12 @@ export class UsersApi extends BaseAPI {
 
     /**
      *
-     * @param {string} id
+     * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public usersFindOne(id: string, options?: RawAxiosRequestConfig) {
+    public usersFindOne(id: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration)
             .usersFindOne(id, options)
             .then((request) => request(this.axios, this.basePath));
@@ -720,12 +732,12 @@ export class UsersApi extends BaseAPI {
 
     /**
      *
-     * @param {string} id
+     * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public usersRemove(id: string, options?: RawAxiosRequestConfig) {
+    public usersRemove(id: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration)
             .usersRemove(id, options)
             .then((request) => request(this.axios, this.basePath));
@@ -733,13 +745,13 @@ export class UsersApi extends BaseAPI {
 
     /**
      *
-     * @param {string} id
+     * @param {number} id
      * @param {UpdateUserDto} updateUserDto
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UsersApi
      */
-    public usersUpdate(id: string, updateUserDto: UpdateUserDto, options?: RawAxiosRequestConfig) {
+    public usersUpdate(id: number, updateUserDto: UpdateUserDto, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration)
             .usersUpdate(id, updateUserDto, options)
             .then((request) => request(this.axios, this.basePath));

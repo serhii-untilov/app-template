@@ -25,15 +25,15 @@ export class PrismaClientExceptionFilterExt extends PrismaClientExceptionFilter 
                 });
                 break;
             }
-            case 'P2025': {
-                const status = HttpStatus.NOT_FOUND;
-                response.status(status).json({
-                    statusCode: status,
-                    message: `[${code}]: ${message}`,
-                    path: request.url,
-                });
-                break;
-            }
+            // case 'P2025': {
+            //     const status = HttpStatus.NOT_FOUND;
+            //     response.status(status).json({
+            //         statusCode: status,
+            //         message: `[${code}]: ${message}`,
+            //         path: request.url,
+            //     });
+            //     break;
+            // }
 
             default:
                 // default 500 error code

@@ -1,6 +1,6 @@
-import { Logger, ValidationPipe, VersioningType } from '@nestjs/common';
+import { ClassSerializerInterceptor, Logger, ValidationPipe, VersioningType } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { HttpAdapterHost, NestFactory } from '@nestjs/core';
+import { HttpAdapterHost, NestFactory, Reflector } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
@@ -20,6 +20,9 @@ async function bootstrap() {
     // TODO - revisit and secure this!
     // app.enableCors({ origin: '*' });
     const title = configService.get<string>('app.title');
+
+    app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
+    app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
     // handle Swagger
     const config = new DocumentBuilder()

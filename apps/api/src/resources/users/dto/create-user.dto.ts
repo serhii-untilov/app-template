@@ -14,6 +14,11 @@ export class CreateUserDto {
     @ApiProperty()
     password: string;
 
+    // @IsArray()
+    // @ArrayNotEmpty()
+    // @ApiProperty()
+    // roles: Role[];
+
     @IsString()
     @IsOptional()
     @MaxLength(30)

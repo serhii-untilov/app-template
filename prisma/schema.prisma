@@ -13,16 +13,34 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
+enum Role {
+    ADMIN
+    MANAGER
+    EMPLOYEE
+    CUSTOMER
+}
+
 model User {
-    id           Int       @id @default(autoincrement())
-    login        String    @unique
+    id           Int        @id @default(autoincrement())
+    login        String     @unique
     password     String
     firstName    String?
     lastName     String?
     language     String?
     refreshToken String?
-    isActive     Boolean   @default(false)
-    createdAt    DateTime  @default(now())
-    updatedAt    DateTime  @updatedAt
+    isActive     Boolean    @default(false)
+    createdAt    DateTime   @default(now())
+    updatedAt    DateTime   @updatedAt
     deletedAt    DateTime?
+    version      Int        @default(1)
+    roles        UserRole[]
+}
+
+model UserRole {
+    id     Int  @id @default(autoincrement())
+    userId Int
+    user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+    role   Role
+
+    @@unique([userId, role])
 }
