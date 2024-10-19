@@ -68,7 +68,7 @@
             "get": {
                 "operationId": "UsersFindOne",
                 "parameters": [
-                    { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }
+                    { "name": "id", "required": true, "in": "path", "schema": { "type": "number" } }
                 ],
                 "responses": {
                     "200": {
@@ -85,7 +85,7 @@
             "patch": {
                 "operationId": "UsersUpdate",
                 "parameters": [
-                    { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }
+                    { "name": "id", "required": true, "in": "path", "schema": { "type": "number" } }
                 ],
                 "requestBody": {
                     "required": true,
@@ -110,7 +110,7 @@
             "delete": {
                 "operationId": "UsersRemove",
                 "parameters": [
-                    { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }
+                    { "name": "id", "required": true, "in": "path", "schema": { "type": "number" } }
                 ],
                 "responses": {
                     "200": {
@@ -156,24 +156,28 @@
                 "properties": {
                     "id": { "type": "number" },
                     "login": { "type": "string" },
+                    "roles": { "type": "array", "items": { "type": "string" } },
                     "firstName": { "type": "string" },
                     "lastName": { "type": "string" },
                     "language": { "type": "string" },
                     "isActive": { "type": "boolean" },
                     "createdAt": { "format": "date-time", "type": "string" },
                     "updatedAt": { "format": "date-time", "type": "string" },
-                    "deletedAt": { "format": "date-time", "type": "string" }
+                    "deletedAt": { "format": "date-time", "type": "string" },
+                    "version": { "type": "number" }
                 },
                 "required": [
                     "id",
                     "login",
+                    "roles",
                     "firstName",
                     "lastName",
                     "language",
                     "isActive",
                     "createdAt",
                     "updatedAt",
-                    "deletedAt"
+                    "deletedAt",
+                    "version"
                 ]
             },
             "UpdateUserDto": {

@@ -8,6 +8,7 @@ import 'reflect-metadata';
 import { appConfig, authConfig, googleConfig } from './config';
 import { UsersModule } from './resources/users/users.module';
 import { HttpExceptionFilter } from './filters/http-exception/http-exception.filter';
+import { UserRolesModule } from './resources/user-roles/user-roles.module';
 
 @Module({
     imports: [
@@ -23,6 +24,7 @@ import { HttpExceptionFilter } from './filters/http-exception/http-exception.fil
             exclude: ['/api/(.*)'],
         }),
         UsersModule,
+        UserRolesModule,
     ],
     controllers: [],
     providers: [
