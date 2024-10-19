@@ -1,12 +1,13 @@
 import { Module, ValidationPipe } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
+import { APP_FILTER, APP_PIPE, HttpAdapterHost } from '@nestjs/core';
 import { ServeStaticModule } from '@nestjs/serve-static';
+import { PrismaClientExceptionFilter } from 'nestjs-prisma';
 import { join } from 'path';
 import 'reflect-metadata';
 import { appConfig, authConfig, googleConfig } from './config';
-import { ErrorsInterceptor } from './interceptors/errors.interceptor';
 import { UsersModule } from './resources/users/users.module';
+import { HttpExceptionFilter } from './filters/http-exception/http-exception.filter';
 
 @Module({
     imports: [
@@ -30,8 +31,15 @@ import { UsersModule } from './resources/users/users.module';
             useClass: ValidationPipe,
         },
         {
-            provide: APP_INTERCEPTOR,
-            useClass: ErrorsInterceptor,
+            provide: APP_FILTER,
+            useFactory: ({ httpAdapter }: HttpAdapterHost) => {
+                return new PrismaClientExceptionFilter(httpAdapter);
+            },
+            inject: [HttpAdapterHost],
+        },
+        {
+            provide: APP_FILTER,
+            useClass: HttpExceptionFilter,
         },
     ],
 })

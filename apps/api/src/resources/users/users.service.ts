@@ -20,7 +20,7 @@ export class UsersService {
     }
 
     async findOne(id: number) {
-        return await this.prisma.user.findUnique({ where: { id } });
+        return await this.prisma.user.findUniqueOrThrow({ where: { id } });
     }
 
     async update(id: number, updateUserDto: UpdateUserDto) {

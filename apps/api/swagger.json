@@ -1,1 +1,192 @@
-{"openapi":"3.0.0","paths":{"/api/users":{"post":{"operationId":"UsersCreate","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/CreateUserDto"}}}},"responses":{"201":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/UserEntity"}}}}},"tags":["users"]},"get":{"operationId":"UsersFindAll","parameters":[],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"type":"array","items":{"$ref":"#/components/schemas/UserEntity"}}}}}},"tags":["users"]}},"/api/users/inactive":{"get":{"operationId":"UsersFindInactive","parameters":[],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"type":"array","items":{"$ref":"#/components/schemas/UserEntity"}}}}}},"tags":["users"]}},"/api/users/{id}":{"get":{"operationId":"UsersFindOne","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/UserEntity"}}}}},"tags":["users"]},"patch":{"operationId":"UsersUpdate","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"requestBody":{"required":true,"content":{"application/json":{"schema":{"$ref":"#/components/schemas/UpdateUserDto"}}}},"responses":{"200":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/UserEntity"}}}}},"tags":["users"]},"delete":{"operationId":"UsersRemove","parameters":[{"name":"id","required":true,"in":"path","schema":{"type":"string"}}],"responses":{"200":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/UserEntity"}}}}},"tags":["users"]}}},"info":{"title":"app-template REST API","description":"","version":"1.0","contact":{}},"tags":[],"servers":[],"components":{"securitySchemes":{"bearer":{"scheme":"bearer","bearerFormat":"JWT","type":"http"}},"schemas":{"CreateUserDto":{"type":"object","properties":{"login":{"type":"string"},"password":{"type":"string"},"firstName":{"type":"string"},"lastName":{"type":"string"},"language":{"type":"string"},"isActive":{"type":"boolean","default":false}},"required":["login","password"]},"UserEntity":{"type":"object","properties":{"id":{"type":"number"},"login":{"type":"string"},"firstName":{"type":"string"},"lastName":{"type":"string"},"language":{"type":"string"},"isActive":{"type":"boolean"},"createdAt":{"format":"date-time","type":"string"},"updatedAt":{"format":"date-time","type":"string"},"deletedAt":{"format":"date-time","type":"string"}},"required":["id","login","firstName","lastName","language","isActive","createdAt","updatedAt","deletedAt"]},"UpdateUserDto":{"type":"object","properties":{"login":{"type":"string"},"password":{"type":"string"},"firstName":{"type":"string"},"lastName":{"type":"string"},"language":{"type":"string"},"isActive":{"type":"boolean","default":false}}}}}}
+{
+    "openapi": "3.0.0",
+    "paths": {
+        "/api/users": {
+            "post": {
+                "operationId": "UsersCreate",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": { "$ref": "#/components/schemas/CreateUserDto" }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/UserEntity" }
+                            }
+                        }
+                    }
+                },
+                "tags": ["users"]
+            },
+            "get": {
+                "operationId": "UsersFindAll",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": { "$ref": "#/components/schemas/UserEntity" }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": ["users"]
+            }
+        },
+        "/api/users/inactive": {
+            "get": {
+                "operationId": "UsersFindInactive",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": { "$ref": "#/components/schemas/UserEntity" }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": ["users"]
+            }
+        },
+        "/api/users/{id}": {
+            "get": {
+                "operationId": "UsersFindOne",
+                "parameters": [
+                    { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/UserEntity" }
+                            }
+                        }
+                    }
+                },
+                "tags": ["users"]
+            },
+            "patch": {
+                "operationId": "UsersUpdate",
+                "parameters": [
+                    { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": { "$ref": "#/components/schemas/UpdateUserDto" }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/UserEntity" }
+                            }
+                        }
+                    }
+                },
+                "tags": ["users"]
+            },
+            "delete": {
+                "operationId": "UsersRemove",
+                "parameters": [
+                    { "name": "id", "required": true, "in": "path", "schema": { "type": "string" } }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/UserEntity" }
+                            }
+                        }
+                    }
+                },
+                "tags": ["users"]
+            }
+        }
+    },
+    "info": {
+        "title": "app-template REST API",
+        "description": "",
+        "version": "1.0",
+        "contact": {}
+    },
+    "tags": [],
+    "servers": [],
+    "components": {
+        "securitySchemes": {
+            "bearer": { "scheme": "bearer", "bearerFormat": "JWT", "type": "http" }
+        },
+        "schemas": {
+            "CreateUserDto": {
+                "type": "object",
+                "properties": {
+                    "login": { "type": "string" },
+                    "password": { "type": "string" },
+                    "firstName": { "type": "string" },
+                    "lastName": { "type": "string" },
+                    "language": { "type": "string" },
+                    "isActive": { "type": "boolean", "default": false }
+                },
+                "required": ["login", "password"]
+            },
+            "UserEntity": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "number" },
+                    "login": { "type": "string" },
+                    "firstName": { "type": "string" },
+                    "lastName": { "type": "string" },
+                    "language": { "type": "string" },
+                    "isActive": { "type": "boolean" },
+                    "createdAt": { "format": "date-time", "type": "string" },
+                    "updatedAt": { "format": "date-time", "type": "string" },
+                    "deletedAt": { "format": "date-time", "type": "string" }
+                },
+                "required": [
+                    "id",
+                    "login",
+                    "firstName",
+                    "lastName",
+                    "language",
+                    "isActive",
+                    "createdAt",
+                    "updatedAt",
+                    "deletedAt"
+                ]
+            },
+            "UpdateUserDto": {
+                "type": "object",
+                "properties": {
+                    "login": { "type": "string" },
+                    "password": { "type": "string" },
+                    "firstName": { "type": "string" },
+                    "lastName": { "type": "string" },
+                    "language": { "type": "string" },
+                    "isActive": { "type": "boolean", "default": false }
+                }
+            }
+        }
+    }
+}
