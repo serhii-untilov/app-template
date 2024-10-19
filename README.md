@@ -94,7 +94,7 @@ npx --workspace api nest g filter prisma-client-exception filters
 - [**Prisma** - Building a REST API with NestJS, Prisma, Postgres, Swagger](https://www.prisma.io/blog/nestjs-prisma-rest-api-7D056s1BmOL0)
 - [**Prisma** - Building a REST API with NestJS and Prisma: Input Validation & Transformation](https://www.prisma.io/blog/nestjs-prisma-validation-7D056s1kOla1)
 - [**Prisma** - Building a REST API with NestJS and Prisma: Error Handling](https://www.prisma.io/blog/nestjs-prisma-error-handling-7D056s1kOop2)
-- [**Prisma** - https://www.prisma.io/blog/nestjs-prisma-relational-data-7D056s1kOabc](https://www.prisma.io/blog/nestjs-prisma-relational-data-7D056s1kOabc)
+- [**Prisma** - Building a REST API with NestJS and Prisma: Handling Relational Data](https://www.prisma.io/blog/nestjs-prisma-relational-data-7D056s1kOabc)
 - [**Prisma** - Building a REST API with NestJS and Prisma: Authentication](https://www.prisma.io/blog/nestjs-prisma-authentication-7D056s1s0k3l)
 - [**Prisma** - How to do Prisma soft delete with NestJS](https://stackoverflow.com/questions/73189707/how-to-do-prisma-soft-delete-with-nestjs)
 - [**Prisma** - Implementing Soft Delete in Prisma using Client Extensions: A Step-by-Step Guide for Nestjs](https://medium.com/@erciliomarquesmanhica/implementing-soft-delete-in-prisma-using-client-extensions-a-step-by-step-guide-for-nestjs-51a9d0716831)
