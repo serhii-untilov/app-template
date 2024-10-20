@@ -79,6 +79,11 @@ npx --workspace api nest g resource auth
 ? Would you like to generate CRUD entry points? No
 npm i --workspace api --save @nestjs/passport passport @nestjs/jwt passport-jwt
 npm i --workspace api --save-dev @types/passport-jwt
+npm i --workspace api bcrypt
+npm i --workspace api --save-dev @types/bcrypt
+npm i --workspace api --save-dev @golevelup/ts-jest
+npm i --workspace api --save @ngneat/falso
+
 
 ```
 

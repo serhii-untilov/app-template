@@ -13,11 +13,27 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-enum Role {
+enum AccessType {
+    CREATE
+    UPDATE
+    DELETE
+    ACCESS
+}
+
+enum ResourceType {
+    ACCESS
+    ROLE
+    USER
+    DEMO
+}
+
+enum RoleType {
     ADMIN
     MANAGER
     EMPLOYEE
     CUSTOMER
+
+    @@map("Role")
 }
 
 model User {
@@ -29,18 +45,47 @@ model User {
     language     String?
     refreshToken String?
     isActive     Boolean    @default(false)
-    createdAt    DateTime   @default(now())
-    updatedAt    DateTime   @updatedAt
-    deletedAt    DateTime?
-    version      Int        @default(1)
     roles        UserRole[]
+
+    createdAt     DateTime  @default(now())
+    createdUserId Int?
+    updatedAt     DateTime  @updatedAt
+    updatedUserId Int?
+    deletedAt     DateTime?
+    deletedUserId Int?
+    version       Int       @default(1)
 }
 
 model UserRole {
-    id     Int  @id @default(autoincrement())
-    userId Int
-    user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
-    role   Role
+    id       Int      @id @default(autoincrement())
+    userId   Int
+    user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    roleType RoleType
 
-    @@unique([userId, role])
+    createdAt     DateTime  @default(now())
+    createdUserId Int?
+    updatedAt     DateTime  @updatedAt
+    updatedUserId Int?
+    deletedAt     DateTime?
+    deletedUserId Int?
+    version       Int       @default(1)
+
+    @@unique([userId, roleType])
+}
+
+model Access {
+    id           Int          @id @default(autoincrement())
+    roleType     RoleType
+    resourceType ResourceType
+    accessType   AccessType
+
+    createdAt     DateTime  @default(now())
+    createdUserId Int?
+    updatedAt     DateTime  @updatedAt
+    updatedUserId Int?
+    deletedAt     DateTime?
+    deletedUserId Int?
+    version       Int       @default(1)
+
+    @@unique([roleType, resourceType, accessType])
 }

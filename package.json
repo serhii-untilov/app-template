@@ -11,8 +11,8 @@
         "m:create": "npm run db && npx prisma migrate dev",
         "m:run": "npm run db && npx prisma migrate deploy",
         "m:seed": "npm run db && npx prisma db seed",
-        "generate-prisma-client": "npx prisma generate",
-        "codegen": "npm run db && npm run generate-prisma-client && turbo codegen && ./scripts/generate_dto"
+        "prisma-generate": "npx prisma generate",
+        "codegen": "npm run db && npm run prisma-generate && turbo codegen && ./scripts/generate_dto"
     },
     "devDependencies": {
         "@openapitools/openapi-generator-cli": "^2.14.0",

@@ -1,9 +1,11 @@
 import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 import { User, UserRole } from '@prisma/client';
 import { Exclude } from 'class-transformer';
+import { Logger } from '../../abstract';
 
-export class UserEntity implements User {
+export class UserEntity extends Logger implements User {
     constructor(partial: Partial<UserEntity>) {
+        super();
         Object.assign(this, partial);
     }
 
@@ -35,16 +37,4 @@ export class UserEntity implements User {
 
     @ApiProperty()
     isActive: boolean;
-
-    @ApiProperty()
-    createdAt: Date;
-
-    @ApiProperty()
-    updatedAt: Date;
-
-    @ApiProperty()
-    deletedAt: Date;
-
-    @ApiProperty()
-    version: number;
 }
