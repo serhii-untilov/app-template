@@ -9,6 +9,7 @@ import { appConfig, authConfig, googleConfig } from './config';
 import { UsersModule } from './resources/users/users.module';
 import { HttpExceptionFilter } from './filters/http-exception/http-exception.filter';
 import { UserRolesModule } from './resources/user-roles/user-roles.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
     imports: [
@@ -25,6 +26,7 @@ import { UserRolesModule } from './resources/user-roles/user-roles.module';
         }),
         UsersModule,
         UserRolesModule,
+        AuthModule,
     ],
     controllers: [],
     providers: [

@@ -74,6 +74,12 @@ npm i --workspace api --save nestjs-prisma
 npx --workspace api nest g filter http-exception filters
 npx --workspace api nest g filter prisma-client-exception filters
 npx --workspace api nest g resource user-roles resources
+npx --workspace api nest g resource auth
+? What transport layer do you use? REST API
+? Would you like to generate CRUD entry points? No
+npm i --workspace api --save @nestjs/passport passport @nestjs/jwt passport-jwt
+npm i --workspace api --save-dev @types/passport-jwt
+
 ```
 
 ## Frontend
