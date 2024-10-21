@@ -1,5 +1,5 @@
 import { AccessType, ResourceType, RoleType } from '@prisma/client';
-import { CreateAccessDto } from './../../resources/access/dto/create-access.dto';
+import { CreateAccessDto } from '../../apps/api/src/resources/access/dto/create-access.dto';
 
 export function generateAccess_Full(
     roleType: RoleType,
