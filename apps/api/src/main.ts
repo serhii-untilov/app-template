@@ -4,7 +4,6 @@ import { HttpAdapterHost, NestFactory, Reflector } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import helmet from 'helmet';
 import { AppModule } from './app.module';
-import { HttpExceptionFilter } from './filters/http-exception/http-exception.filter';
 import { PrismaClientExceptionFilterExt } from './filters/prisma-client-exception/prisma-client-exception.filter';
 
 async function bootstrap() {
@@ -13,7 +12,6 @@ async function bootstrap() {
     const globalPrefix = 'api';
     const logger = new Logger(bootstrap.name);
     app.setGlobalPrefix(globalPrefix);
-    app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
     const configService = app.get(ConfigService);
     // set up versioning
     app.enableVersioning({ type: VersioningType.URI, prefix: 'v' });
@@ -21,7 +19,7 @@ async function bootstrap() {
     // app.enableCors({ origin: '*' });
     const title = configService.get<string>('app.title');
 
-    app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
+    app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
     app.useGlobalInterceptors(new ClassSerializerInterceptor(app.get(Reflector)));
 
     // handle Swagger
@@ -42,7 +40,7 @@ async function bootstrap() {
     const { httpAdapter } = app.get(HttpAdapterHost);
     app.useGlobalFilters(new PrismaClientExceptionFilterExt(httpAdapter));
     // HTTP exceptions
-    app.useGlobalFilters(new HttpExceptionFilter());
+    // app.useGlobalFilters(new HttpExceptionFilter());
 
     // Run API
     const host = configService.get<string>('app.host');

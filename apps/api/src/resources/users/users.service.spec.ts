@@ -3,6 +3,8 @@ import { PrismaClientExtended } from '@repo/prisma-client';
 import { DeepMockProxy, mockDeep } from 'jest-mock-extended';
 import { PrismaService } from '../../prisma/prisma.service';
 import { UsersService } from './users.service';
+import { AccessService } from '../access';
+import { createMock } from '@golevelup/ts-jest';
 
 describe('UsersService', () => {
     let service: UsersService;
@@ -10,7 +12,11 @@ describe('UsersService', () => {
 
     beforeEach(async () => {
         const module: TestingModule = await Test.createTestingModule({
-            providers: [UsersService, PrismaService],
+            providers: [
+                UsersService,
+                PrismaService,
+                { provide: AccessService, useValue: createMock<AccessService>() },
+            ],
         })
             .overrideProvider(PrismaService)
             .useValue(mockDeep<PrismaClientExtended>())

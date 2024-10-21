@@ -11,12 +11,13 @@
         "m:create": "npm run db && npx prisma migrate dev",
         "m:run": "npm run db && npx prisma migrate deploy",
         "m:seed": "npm run db && npx prisma db seed",
-        "generate-prisma-client": "npx prisma generate",
-        "codegen": "npm run db && npm run generate-prisma-client && turbo codegen && ./scripts/generate_dto"
+        "prisma-generate": "npx prisma generate",
+        "codegen": "npm run db && npm run prisma-generate && turbo codegen && ./scripts/generate_dto"
     },
     "devDependencies": {
         "@openapitools/openapi-generator-cli": "^2.14.0",
         "@prisma/client": "^5.21.1",
+        "@types/bcrypt": "^5.0.2",
         "@types/node": "^22.7.5",
         "api": "^0.0.1",
         "eslint": "^8.57.0",
@@ -34,5 +35,8 @@
     ],
     "prisma": {
         "seed": "ts-node prisma/seeds/seed.ts"
+    },
+    "dependencies": {
+        "bcrypt": "^5.1.1"
     }
 }

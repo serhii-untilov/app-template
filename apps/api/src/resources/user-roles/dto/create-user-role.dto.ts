@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Role } from '@prisma/client';
-import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import { RoleType } from '@prisma/client';
+import { IsNotEmpty, IsNumber, IsString, MaxLength } from 'class-validator';
 
 export class CreateUserRoleDto {
     @IsNumber()
@@ -10,6 +10,7 @@ export class CreateUserRoleDto {
 
     @IsString()
     @IsNotEmpty()
-    @ApiProperty()
-    role: Role;
+    @MaxLength(20)
+    @ApiProperty({ enum: RoleType, enumName: 'RoleType' })
+    roleType: RoleType;
 }

@@ -1,8 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Role, UserRole } from '@prisma/client';
+import { Logger } from '../../abstract';
+import { RoleType, UserRole } from '@prisma/client';
 
-export class UserRoleEntity implements UserRole {
+export class UserRoleEntity extends Logger implements UserRole {
     constructor(partial: Partial<UserRoleEntity>) {
+        super();
         Object.assign(this, partial);
     }
 
@@ -13,5 +15,5 @@ export class UserRoleEntity implements UserRole {
     userId: number;
 
     @ApiProperty()
-    role: Role;
+    roleType: RoleType;
 }

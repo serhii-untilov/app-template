@@ -64,6 +64,26 @@
                 "tags": ["users"]
             }
         },
+        "/api/users/removed": {
+            "get": {
+                "operationId": "UsersFindRemoved",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": { "$ref": "#/components/schemas/UserEntity" }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": ["users"]
+            }
+        },
         "/api/users/{id}": {
             "get": {
                 "operationId": "UsersFindOne",
@@ -123,6 +143,129 @@
                     }
                 },
                 "tags": ["users"]
+            }
+        },
+        "/api/users/{id}/restore": {
+            "get": {
+                "operationId": "UsersRestore",
+                "parameters": [
+                    { "name": "id", "required": true, "in": "path", "schema": { "type": "number" } }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/UserEntity" }
+                            }
+                        }
+                    }
+                },
+                "tags": ["users"]
+            }
+        },
+        "/api/user-roles": {
+            "post": {
+                "operationId": "UserRolesCreate",
+                "parameters": [],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": { "$ref": "#/components/schemas/CreateUserRoleDto" }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/UserRoleEntity" }
+                            }
+                        }
+                    }
+                },
+                "tags": ["user-roles"]
+            },
+            "get": {
+                "operationId": "UserRolesFindAll",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": { "$ref": "#/components/schemas/UserRoleEntity" }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": ["user-roles"]
+            }
+        },
+        "/api/user-roles/{id}": {
+            "get": {
+                "operationId": "UserRolesFindOne",
+                "parameters": [
+                    { "name": "id", "required": true, "in": "path", "schema": { "type": "number" } }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/UserRoleEntity" }
+                            }
+                        }
+                    }
+                },
+                "tags": ["user-roles"]
+            },
+            "patch": {
+                "operationId": "UserRolesUpdate",
+                "parameters": [
+                    { "name": "id", "required": true, "in": "path", "schema": { "type": "number" } }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": { "$ref": "#/components/schemas/UpdateUserRoleDto" }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/UserRoleEntity" }
+                            }
+                        }
+                    }
+                },
+                "tags": ["user-roles"]
+            },
+            "delete": {
+                "operationId": "UserRolesRemove",
+                "parameters": [
+                    { "name": "id", "required": true, "in": "path", "schema": { "type": "number" } }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": { "$ref": "#/components/schemas/UserRoleEntity" }
+                            }
+                        }
+                    }
+                },
+                "tags": ["user-roles"]
             }
         }
     },
@@ -190,6 +333,24 @@
                     "language": { "type": "string" },
                     "isActive": { "type": "boolean", "default": false }
                 }
+            },
+            "CreateUserRoleDto": {
+                "type": "object",
+                "properties": { "userId": { "type": "number" }, "role": { "type": "string" } },
+                "required": ["userId", "role"]
+            },
+            "UserRoleEntity": {
+                "type": "object",
+                "properties": {
+                    "id": { "type": "number" },
+                    "userId": { "type": "number" },
+                    "role": { "type": "string" }
+                },
+                "required": ["id", "userId", "role"]
+            },
+            "UpdateUserRoleDto": {
+                "type": "object",
+                "properties": { "userId": { "type": "number" }, "role": { "type": "string" } }
             }
         }
     }

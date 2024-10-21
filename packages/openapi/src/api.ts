@@ -79,6 +79,25 @@ export interface CreateUserDto {
 /**
  *
  * @export
+ * @interface CreateUserRoleDto
+ */
+export interface CreateUserRoleDto {
+    /**
+     *
+     * @type {number}
+     * @memberof CreateUserRoleDto
+     */
+    userId: number;
+    /**
+     *
+     * @type {string}
+     * @memberof CreateUserRoleDto
+     */
+    role: string;
+}
+/**
+ *
+ * @export
  * @interface UpdateUserDto
  */
 export interface UpdateUserDto {
@@ -118,6 +137,25 @@ export interface UpdateUserDto {
      * @memberof UpdateUserDto
      */
     isActive?: boolean;
+}
+/**
+ *
+ * @export
+ * @interface UpdateUserRoleDto
+ */
+export interface UpdateUserRoleDto {
+    /**
+     *
+     * @type {number}
+     * @memberof UpdateUserRoleDto
+     */
+    userId?: number;
+    /**
+     *
+     * @type {string}
+     * @memberof UpdateUserRoleDto
+     */
+    role?: string;
 }
 /**
  *
@@ -191,6 +229,539 @@ export interface UserEntity {
      * @memberof UserEntity
      */
     version: number;
+}
+/**
+ *
+ * @export
+ * @interface UserRoleEntity
+ */
+export interface UserRoleEntity {
+    /**
+     *
+     * @type {number}
+     * @memberof UserRoleEntity
+     */
+    id: number;
+    /**
+     *
+     * @type {number}
+     * @memberof UserRoleEntity
+     */
+    userId: number;
+    /**
+     *
+     * @type {string}
+     * @memberof UserRoleEntity
+     */
+    role: string;
+}
+
+/**
+ * UserRolesApi - axios parameter creator
+ * @export
+ */
+export const UserRolesApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         *
+         * @param {CreateUserRoleDto} createUserRoleDto
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userRolesCreate: async (
+            createUserRoleDto: CreateUserRoleDto,
+            options: RawAxiosRequestConfig = {},
+        ): Promise<RequestArgs> => {
+            // verify required parameter 'createUserRoleDto' is not null or undefined
+            assertParamExists('userRolesCreate', 'createUserRoleDto', createUserRoleDto);
+            const localVarPath = `/api/user-roles`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions =
+                baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {
+                ...localVarHeaderParameter,
+                ...headersFromBaseOptions,
+                ...options.headers,
+            };
+            localVarRequestOptions.data = serializeDataIfNeeded(
+                createUserRoleDto,
+                localVarRequestOptions,
+                configuration,
+            );
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userRolesFindAll: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/user-roles`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions =
+                baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {
+                ...localVarHeaderParameter,
+                ...headersFromBaseOptions,
+                ...options.headers,
+            };
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userRolesFindOne: async (
+            id: number,
+            options: RawAxiosRequestConfig = {},
+        ): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('userRolesFindOne', 'id', id);
+            const localVarPath = `/api/user-roles/{id}`.replace(
+                `{${'id'}}`,
+                encodeURIComponent(String(id)),
+            );
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions =
+                baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {
+                ...localVarHeaderParameter,
+                ...headersFromBaseOptions,
+                ...options.headers,
+            };
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userRolesRemove: async (
+            id: number,
+            options: RawAxiosRequestConfig = {},
+        ): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('userRolesRemove', 'id', id);
+            const localVarPath = `/api/user-roles/{id}`.replace(
+                `{${'id'}}`,
+                encodeURIComponent(String(id)),
+            );
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions =
+                baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {
+                ...localVarHeaderParameter,
+                ...headersFromBaseOptions,
+                ...options.headers,
+            };
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @param {number} id
+         * @param {UpdateUserRoleDto} updateUserRoleDto
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userRolesUpdate: async (
+            id: number,
+            updateUserRoleDto: UpdateUserRoleDto,
+            options: RawAxiosRequestConfig = {},
+        ): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('userRolesUpdate', 'id', id);
+            // verify required parameter 'updateUserRoleDto' is not null or undefined
+            assertParamExists('userRolesUpdate', 'updateUserRoleDto', updateUserRoleDto);
+            const localVarPath = `/api/user-roles/{id}`.replace(
+                `{${'id'}}`,
+                encodeURIComponent(String(id)),
+            );
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions =
+                baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {
+                ...localVarHeaderParameter,
+                ...headersFromBaseOptions,
+                ...options.headers,
+            };
+            localVarRequestOptions.data = serializeDataIfNeeded(
+                updateUserRoleDto,
+                localVarRequestOptions,
+                configuration,
+            );
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    };
+};
+
+/**
+ * UserRolesApi - functional programming interface
+ * @export
+ */
+export const UserRolesApiFp = function (configuration?: Configuration) {
+    const localVarAxiosParamCreator = UserRolesApiAxiosParamCreator(configuration);
+    return {
+        /**
+         *
+         * @param {CreateUserRoleDto} createUserRoleDto
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userRolesCreate(
+            createUserRoleDto: CreateUserRoleDto,
+            options?: RawAxiosRequestConfig,
+        ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRoleEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userRolesCreate(
+                createUserRoleDto,
+                options,
+            );
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath =
+                operationServerMap['UserRolesApi.userRolesCreate']?.[localVarOperationServerIndex]
+                    ?.url;
+            return (axios, basePath) =>
+                createRequestFunction(
+                    localVarAxiosArgs,
+                    globalAxios,
+                    BASE_PATH,
+                    configuration,
+                )(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userRolesFindAll(
+            options?: RawAxiosRequestConfig,
+        ): Promise<
+            (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserRoleEntity>>
+        > {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userRolesFindAll(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath =
+                operationServerMap['UserRolesApi.userRolesFindAll']?.[localVarOperationServerIndex]
+                    ?.url;
+            return (axios, basePath) =>
+                createRequestFunction(
+                    localVarAxiosArgs,
+                    globalAxios,
+                    BASE_PATH,
+                    configuration,
+                )(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userRolesFindOne(
+            id: number,
+            options?: RawAxiosRequestConfig,
+        ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRoleEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userRolesFindOne(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath =
+                operationServerMap['UserRolesApi.userRolesFindOne']?.[localVarOperationServerIndex]
+                    ?.url;
+            return (axios, basePath) =>
+                createRequestFunction(
+                    localVarAxiosArgs,
+                    globalAxios,
+                    BASE_PATH,
+                    configuration,
+                )(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userRolesRemove(
+            id: number,
+            options?: RawAxiosRequestConfig,
+        ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRoleEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userRolesRemove(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath =
+                operationServerMap['UserRolesApi.userRolesRemove']?.[localVarOperationServerIndex]
+                    ?.url;
+            return (axios, basePath) =>
+                createRequestFunction(
+                    localVarAxiosArgs,
+                    globalAxios,
+                    BASE_PATH,
+                    configuration,
+                )(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @param {number} id
+         * @param {UpdateUserRoleDto} updateUserRoleDto
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userRolesUpdate(
+            id: number,
+            updateUserRoleDto: UpdateUserRoleDto,
+            options?: RawAxiosRequestConfig,
+        ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserRoleEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userRolesUpdate(
+                id,
+                updateUserRoleDto,
+                options,
+            );
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath =
+                operationServerMap['UserRolesApi.userRolesUpdate']?.[localVarOperationServerIndex]
+                    ?.url;
+            return (axios, basePath) =>
+                createRequestFunction(
+                    localVarAxiosArgs,
+                    globalAxios,
+                    BASE_PATH,
+                    configuration,
+                )(axios, localVarOperationServerBasePath || basePath);
+        },
+    };
+};
+
+/**
+ * UserRolesApi - factory interface
+ * @export
+ */
+export const UserRolesApiFactory = function (
+    configuration?: Configuration,
+    basePath?: string,
+    axios?: AxiosInstance,
+) {
+    const localVarFp = UserRolesApiFp(configuration);
+    return {
+        /**
+         *
+         * @param {CreateUserRoleDto} createUserRoleDto
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userRolesCreate(
+            createUserRoleDto: CreateUserRoleDto,
+            options?: RawAxiosRequestConfig,
+        ): AxiosPromise<UserRoleEntity> {
+            return localVarFp
+                .userRolesCreate(createUserRoleDto, options)
+                .then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userRolesFindAll(options?: RawAxiosRequestConfig): AxiosPromise<Array<UserRoleEntity>> {
+            return localVarFp.userRolesFindAll(options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userRolesFindOne(
+            id: number,
+            options?: RawAxiosRequestConfig,
+        ): AxiosPromise<UserRoleEntity> {
+            return localVarFp
+                .userRolesFindOne(id, options)
+                .then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userRolesRemove(id: number, options?: RawAxiosRequestConfig): AxiosPromise<UserRoleEntity> {
+            return localVarFp
+                .userRolesRemove(id, options)
+                .then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @param {number} id
+         * @param {UpdateUserRoleDto} updateUserRoleDto
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userRolesUpdate(
+            id: number,
+            updateUserRoleDto: UpdateUserRoleDto,
+            options?: RawAxiosRequestConfig,
+        ): AxiosPromise<UserRoleEntity> {
+            return localVarFp
+                .userRolesUpdate(id, updateUserRoleDto, options)
+                .then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * UserRolesApi - object-oriented interface
+ * @export
+ * @class UserRolesApi
+ * @extends {BaseAPI}
+ */
+export class UserRolesApi extends BaseAPI {
+    /**
+     *
+     * @param {CreateUserRoleDto} createUserRoleDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserRolesApi
+     */
+    public userRolesCreate(createUserRoleDto: CreateUserRoleDto, options?: RawAxiosRequestConfig) {
+        return UserRolesApiFp(this.configuration)
+            .userRolesCreate(createUserRoleDto, options)
+            .then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserRolesApi
+     */
+    public userRolesFindAll(options?: RawAxiosRequestConfig) {
+        return UserRolesApiFp(this.configuration)
+            .userRolesFindAll(options)
+            .then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     *
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserRolesApi
+     */
+    public userRolesFindOne(id: number, options?: RawAxiosRequestConfig) {
+        return UserRolesApiFp(this.configuration)
+            .userRolesFindOne(id, options)
+            .then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     *
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserRolesApi
+     */
+    public userRolesRemove(id: number, options?: RawAxiosRequestConfig) {
+        return UserRolesApiFp(this.configuration)
+            .userRolesRemove(id, options)
+            .then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     *
+     * @param {number} id
+     * @param {UpdateUserRoleDto} updateUserRoleDto
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserRolesApi
+     */
+    public userRolesUpdate(
+        id: number,
+        updateUserRoleDto: UpdateUserRoleDto,
+        options?: RawAxiosRequestConfig,
+    ) {
+        return UserRolesApiFp(this.configuration)
+            .userRolesUpdate(id, updateUserRoleDto, options)
+            .then((request) => request(this.axios, this.basePath));
+    }
 }
 
 /**
@@ -351,6 +922,38 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
         },
         /**
          *
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersFindRemoved: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/api/users/removed`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions =
+                baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {
+                ...localVarHeaderParameter,
+                ...headersFromBaseOptions,
+                ...options.headers,
+            };
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
          * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -373,6 +976,47 @@ export const UsersApiAxiosParamCreator = function (configuration?: Configuration
             }
 
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options };
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions =
+                baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {
+                ...localVarHeaderParameter,
+                ...headersFromBaseOptions,
+                ...options.headers,
+            };
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         *
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersRestore: async (
+            id: number,
+            options: RawAxiosRequestConfig = {},
+        ): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('usersRestore', 'id', id);
+            const localVarPath = `/api/users/{id}/restore`.replace(
+                `{${'id'}}`,
+                encodeURIComponent(String(id)),
+            );
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options };
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -542,6 +1186,27 @@ export const UsersApiFp = function (configuration?: Configuration) {
         },
         /**
          *
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async usersFindRemoved(
+            options?: RawAxiosRequestConfig,
+        ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<UserEntity>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.usersFindRemoved(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath =
+                operationServerMap['UsersApi.usersFindRemoved']?.[localVarOperationServerIndex]
+                    ?.url;
+            return (axios, basePath) =>
+                createRequestFunction(
+                    localVarAxiosArgs,
+                    globalAxios,
+                    BASE_PATH,
+                    configuration,
+                )(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
          * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -554,6 +1219,28 @@ export const UsersApiFp = function (configuration?: Configuration) {
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath =
                 operationServerMap['UsersApi.usersRemove']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) =>
+                createRequestFunction(
+                    localVarAxiosArgs,
+                    globalAxios,
+                    BASE_PATH,
+                    configuration,
+                )(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         *
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async usersRestore(
+            id: number,
+            options?: RawAxiosRequestConfig,
+        ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserEntity>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.usersRestore(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath =
+                operationServerMap['UsersApi.usersRestore']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) =>
                 createRequestFunction(
                     localVarAxiosArgs,
@@ -647,12 +1334,29 @@ export const UsersApiFactory = function (
         },
         /**
          *
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersFindRemoved(options?: RawAxiosRequestConfig): AxiosPromise<Array<UserEntity>> {
+            return localVarFp.usersFindRemoved(options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
          * @param {number} id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         usersRemove(id: number, options?: RawAxiosRequestConfig): AxiosPromise<UserEntity> {
             return localVarFp.usersRemove(id, options).then((request) => request(axios, basePath));
+        },
+        /**
+         *
+         * @param {number} id
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        usersRestore(id: number, options?: RawAxiosRequestConfig): AxiosPromise<UserEntity> {
+            return localVarFp.usersRestore(id, options).then((request) => request(axios, basePath));
         },
         /**
          *
@@ -732,6 +1436,18 @@ export class UsersApi extends BaseAPI {
 
     /**
      *
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public usersFindRemoved(options?: RawAxiosRequestConfig) {
+        return UsersApiFp(this.configuration)
+            .usersFindRemoved(options)
+            .then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     *
      * @param {number} id
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -740,6 +1456,19 @@ export class UsersApi extends BaseAPI {
     public usersRemove(id: number, options?: RawAxiosRequestConfig) {
         return UsersApiFp(this.configuration)
             .usersRemove(id, options)
+            .then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     *
+     * @param {number} id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UsersApi
+     */
+    public usersRestore(id: number, options?: RawAxiosRequestConfig) {
+        return UsersApiFp(this.configuration)
+            .usersRestore(id, options)
             .then((request) => request(this.axios, this.basePath));
     }
 

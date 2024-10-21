@@ -1,19 +1,19 @@
-import { Module } from '@nestjs/common';
-import { UserRolesService } from './user-roles.service';
-import { UserRolesController } from './user-roles.controller';
+import { forwardRef, Module } from '@nestjs/common';
 import { PrismaModule } from '../../prisma/prisma.module';
-import { APP_FILTER } from '@nestjs/core';
-import { HttpExceptionFilter } from '../../filters/http-exception/http-exception.filter';
+import { AccessModule } from '../access';
+import { UserRolesController } from './user-roles.controller';
+import { UserRolesService } from './user-roles.service';
 
 @Module({
-    imports: [PrismaModule],
+    imports: [forwardRef(() => PrismaModule), AccessModule],
     controllers: [UserRolesController],
     providers: [
         UserRolesService,
-        {
-            provide: APP_FILTER,
-            useClass: HttpExceptionFilter,
-        },
+        // {
+        //     provide: APP_FILTER,
+        //     useClass: HttpExceptionFilter,
+        // },
     ],
+    exports: [UserRolesService],
 })
 export class UserRolesModule {}
