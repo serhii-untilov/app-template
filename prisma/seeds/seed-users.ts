@@ -1,55 +1,41 @@
-import { Role } from '@prisma/client';
+import { RoleType } from '@prisma/client';
 import { Seed, SeedParams } from './seed.abstract';
+import * as bcrypt from 'bcrypt';
 
 export class SeedUsers extends Seed {
     async run(params: SeedParams): Promise<void> {
-        await params.prisma.user.upsert({
-            where: { login: 'admin' },
-            update: {},
-            create: {
-                login: 'admin',
-                password: 'admin',
-                isActive: true,
-                roles: {
-                    create: [{ role: Role.ADMIN }],
-                },
-            },
-        });
-        await params.prisma.user.upsert({
-            where: { login: 'manager' },
-            update: {},
-            create: {
-                login: 'manager',
-                password: 'manager',
-                isActive: true,
-                roles: {
-                    create: [{ role: Role.MANAGER }],
-                },
-            },
-        });
-        await params.prisma.user.upsert({
-            where: { login: 'employee' },
-            update: {},
-            create: {
-                login: 'employee',
-                password: 'employee',
-                isActive: true,
-                roles: {
-                    create: [{ role: Role.EMPLOYEE }],
-                },
-            },
-        });
-        await params.prisma.user.upsert({
-            where: { login: 'customer' },
-            update: {},
-            create: {
-                login: 'customer',
-                password: 'customer',
-                isActive: true,
-                roles: {
-                    create: [{ role: Role.CUSTOMER }],
-                },
-            },
-        });
+        const seeds = [
+            { login: 'admin', roleType: RoleType.ADMIN },
+            { login: 'manager', roleType: RoleType.MANAGER },
+            { login: 'employee', roleType: RoleType.EMPLOYEE },
+            { login: 'customer', roleType: RoleType.CUSTOMER },
+        ];
+        Promise.all(
+            seeds.map((o) => {
+                return new Promise((resolve, reject) => {
+                    const seed = async () => {
+                        const hash = await bcrypt.hash(o.login, 10);
+                        await params.prisma.user.upsert({
+                            where: { login: o.login },
+                            update: {},
+                            create: {
+                                login: o.login,
+                                password: hash,
+                                isActive: true,
+                                roles: {
+                                    create: [{ roleType: o.roleType }],
+                                },
+                            },
+                        });
+                    };
+                    try {
+                        seed();
+                        resolve(true);
+                    } catch (e) {
+                        reject(e);
+                    }
+                });
+            }),
+        );
     }
 }

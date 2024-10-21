@@ -10,7 +10,7 @@ import {
     Req,
     UseGuards,
 } from '@nestjs/common';
-import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { CreateUserRoleDto } from './dto/create-user-role.dto';
 import { UpdateUserRoleDto } from './dto/update-user-role.dto';
 import { UserRoleEntity } from './entities/user-role.entity';
@@ -21,6 +21,7 @@ import { Request } from 'express';
 
 @Controller('user-roles')
 @ApiTags('user-roles')
+@ApiBearerAuth()
 export class UserRolesController {
     constructor(private readonly service: UserRolesService) {}
 

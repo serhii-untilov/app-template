@@ -15,6 +15,7 @@ import {
     ApiCreatedResponse,
     ApiOkResponse,
     ApiOperation,
+    ApiTags,
     getSchemaPath,
 } from '@nestjs/swagger';
 import { ResourceType, RoleType } from '@prisma/client';
@@ -31,6 +32,7 @@ import {
 import { AccessEntity } from './entities/access.entity';
 
 @Controller('access')
+@ApiTags('access')
 @ApiBearerAuth()
 export class AccessController {
     constructor(private readonly service: AccessService) {}

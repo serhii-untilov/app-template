@@ -5,11 +5,10 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { PrismaClientExceptionFilter } from 'nestjs-prisma';
 import { join } from 'path';
 import 'reflect-metadata';
-import { appConfig, authConfig, googleConfig } from './config';
-import { UsersModule } from './resources/users/users.module';
-import { HttpExceptionFilter } from './filters/http-exception/http-exception.filter';
-import { UserRolesModule } from './resources/user-roles/user-roles.module';
 import { AuthModule } from './auth/auth.module';
+import { appConfig, authConfig, googleConfig } from './config';
+import { UserRolesModule } from './resources/user-roles/user-roles.module';
+import { UsersModule } from './resources/users/users.module';
 
 @Module({
     imports: [
@@ -41,10 +40,10 @@ import { AuthModule } from './auth/auth.module';
             },
             inject: [HttpAdapterHost],
         },
-        {
-            provide: APP_FILTER,
-            useClass: HttpExceptionFilter,
-        },
+        // {
+        //     provide: APP_FILTER,
+        //     useClass: HttpExceptionFilter,
+        // },
     ],
 })
 export class AppModule {}

@@ -1,7 +1,7 @@
 import { AccessTokenGuard, RefreshTokenGuard } from '@/guards';
 import { getRefreshToken, getUserId } from '@/utils';
 import { Body, Controller, Get, HttpCode, HttpStatus, Post, Req, UseGuards } from '@nestjs/common';
-import { ApiOkResponse } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { Request } from 'express';
 import { CreateUserDto } from './../resources/users/dto/create-user.dto';
 import { AuthService } from './auth.service';
@@ -9,6 +9,7 @@ import { AuthDto } from './dto/auth.dto';
 import { TokensDto } from './dto/tokens.dto';
 
 @Controller('auth')
+@ApiTags('auth')
 export class AuthController {
     constructor(private authService: AuthService) {}
 
@@ -27,6 +28,7 @@ export class AuthController {
     }
 
     @Get('logout')
+    @ApiBearerAuth()
     @UseGuards(AccessTokenGuard)
     async logout(@Req() req: Request): Promise<null> {
         const userId = getUserId(req);
@@ -34,6 +36,7 @@ export class AuthController {
     }
 
     @Get('refresh')
+    @ApiBearerAuth()
     @UseGuards(RefreshTokenGuard)
     @ApiOkResponse({ type: TokensDto })
     refreshTokens(@Req() req: Request) {
