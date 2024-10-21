@@ -2,14 +2,15 @@ import { RoleType } from '@prisma/client';
 import { Seed, SeedParams } from './seed.abstract';
 import * as bcrypt from 'bcrypt';
 
+const seeds = [
+    { login: 'admin', roleType: RoleType.ADMIN },
+    { login: 'manager', roleType: RoleType.MANAGER },
+    { login: 'employee', roleType: RoleType.EMPLOYEE },
+    { login: 'customer', roleType: RoleType.CUSTOMER },
+];
+
 export class SeedUsers extends Seed {
     async run(params: SeedParams): Promise<void> {
-        const seeds = [
-            { login: 'admin', roleType: RoleType.ADMIN },
-            { login: 'manager', roleType: RoleType.MANAGER },
-            { login: 'employee', roleType: RoleType.EMPLOYEE },
-            { login: 'customer', roleType: RoleType.CUSTOMER },
-        ];
         Promise.all(
             seeds.map((o) => {
                 return new Promise((resolve, reject) => {

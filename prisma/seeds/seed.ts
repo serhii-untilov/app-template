@@ -1,10 +1,12 @@
 import { PrismaClient } from '@prisma/client';
 import { SeedUsers } from './seed-users';
+import { SeedAccess } from './seed-access';
 
 const isLogging = false;
 const seeds = [
     // Add the new seeds here, at the end of the list
     new SeedUsers(),
+    new SeedAccess(),
 ];
 
 async function main() {
