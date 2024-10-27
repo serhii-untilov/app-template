@@ -1,2 +1,2 @@
 // utils
-export { setupCounter } from './counter';
+export * from './counter';

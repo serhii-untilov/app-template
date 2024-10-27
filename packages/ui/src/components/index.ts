@@ -1,3 +1,3 @@
 // components
-export { Header } from './header';
-export { Counter } from './counter';
+export * from './header';
+export * from './counter';
