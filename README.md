@@ -1,5 +1,24 @@
 # Application Template
 
+## Components
+
+- [+] [TurboRepo](https://turbo.build/repo/docs)
+- [+] [NestJS](https://nestjs.com/)
+- [+] [Prisma](https://www.prisma.io/)
+- [+] [PostgreSQL](https://www.postgresql.org/)
+- [+] [Swagger](https://swagger.io/)
+- [+] [OpenAPI Generator](https://openapi-generator.tech/)
+- [+] [Vite](https://vite.dev/)
+- [+] [React](https://react.dev/)
+- [+] [TailwindCSS](https://tailwindcss.com/)
+- [ ] [shadcn/ui](https://ui.shadcn.com/)
+- [ ] [Redux Toolkit](https://redux-toolkit.js.org/)
+- [ ] [Axios](https://axios-http.com/)
+- [ ] [React Query](https://tanstack.com/query/latest/docs/framework/react/overview)
+- [ ] [React Hook Form](https://react-hook-form.com/)
+- [ ] [Zod](https://zod.dev/)
+- [ ] [Docker, Docker Compose, Docker Hub](https://docs.docker.com/compose/)
+
 ## Apps and Packages
 
 - `api`: a [NestJS](https://nestjs.com/) backend application
@@ -56,7 +75,7 @@ npm i bcrypt
 npm i --save-dev @types/bcrypt
 ```
 
-## Backend
+## api - backend application
 
 ```bash
 npx --workspace api nest g module prisma
@@ -89,11 +108,46 @@ npm i --workspace api --save-dev typescript jest ts-jest @types/jest
 
 ```
 
-## Frontend
+## web - frontend application
 
-```bash
+``` bash
 npm i --workspace web --save-dev typescript jest ts-jest @types/jest
+npm i --workspace web react-router-dom
+npm i --workspace web react-error-boundary
+npm i --workspace web axios
+npm i --workspace web @reduxjs/toolkit react-redux
+npm i --workspace web @tanstack/react-query
+npm i --workspace web @tanstack/react-query-devtools
+npm i --workspace web @fontsource/roboto
+npm i --workspace web notistack
+npm i --workspace web react-hook-form
+npm i --workspace web react-number-format
+npm i --workspace web react-i18next i18next
+npm i --workspace web i18next-browser-languagedetector
+npm i --workspace web i18next-http-backend
+npm i --workspace web --save-dev rollup-plugin-visualizer
+
+```
+
+## docs - frontend application
+
+``` bash
 npm i --workspace docs --save-dev typescript jest ts-jest @types/jest
+
+```
+
+## @repo/ui - UI components library
+
+``` bash
+npm i --workspace @repo/ui tailwindcss
+npm i --workspace @repo/ui --save-dev shadcn-ui@latest
+cd ./packages/ui/
+npx tailwindcss init --ts
+cd src
+touch globals.css
+cd ..
+
+cd ../..
 
 ```
 
@@ -101,11 +155,7 @@ npm i --workspace docs --save-dev typescript jest ts-jest @types/jest
 
 - [**Web apps development methodology** - The Twelve-Factor App](https://12factor.net)
 - [**Turborepo** - Add Turborepo to your existing monorepo](https://turbo.build/repo/docs/getting-started/existing-monorepo)
-- [**TypeScript** - Static type checking](https://www.typescriptlang.org/)
-- [**ESLint** - Code linting](https://eslint.org/)
-- [**Prettier** - code formatting](https://prettier.io)
 - [**Commits** - Conventional Commits](https://www.conventionalcommits.org)
-- [**Prisma** - Prisma Docs](https://www.prisma.io/docs/orm/prisma-migrate)
 - [**Prisma** - Building a REST API with NestJS, Prisma, Postgres, Swagger](https://www.prisma.io/blog/nestjs-prisma-rest-api-7D056s1BmOL0)
 - [**Prisma** - Building a REST API with NestJS and Prisma: Input Validation & Transformation](https://www.prisma.io/blog/nestjs-prisma-validation-7D056s1kOla1)
 - [**Prisma** - Building a REST API with NestJS and Prisma: Error Handling](https://www.prisma.io/blog/nestjs-prisma-error-handling-7D056s1kOop2)
@@ -122,10 +172,13 @@ npm i --workspace docs --save-dev typescript jest ts-jest @types/jest
 - [**JWT** - The OAuth 2.0 Authorization Framework: Bearer Token Usage](https://datatracker.ietf.org/doc/html/rfc6750)
 - [**NestJS** - NestJS JWT Authentication with Refresh Tokens Complete Guide](https://www.elvisduru.com/blog/nestjs-jwt-authentication-refresh-token)
 - [**NestJS** - How to implement refresh tokens JWT in NestJS](https://webera.blog/how-to-implement-refresh-tokens-jwt-in-nestjs-b8093c5642a9)
+- [**Day.js** - A Practical Guide to a 98% Reduction in Package Size with Day.js](https://medium.com/insiderengineering/size-matters-a-practical-guide-to-a-98-reduction-in-package-size-with-day-js-8853a44d3546)
+- [**Shadcn** - Create a Turborepo with NextJs & Tailwindcss & Shadcn](https://matinkhani.medium.com/create-a-turborepo-with-nextjs-tailwindcss-shadcn-6e6ecfd52aea)
 - [**React** - React Query and Axios (Typescript) example with Rest API](https://www.bezkoder.com/react-query-axios-typescript/)
 - [**Icons** - Google Fonts - Material Icons](https://fonts.google.com/icons?icon.set=Material+Icons)
 - [**React** - Define React Routes With Better Approach (TypeScript)](https://medium.com/@ahsan-ali-mansoor/define-react-routes-with-better-approach-typescript-d07de782b517)
 - [**React** - Rules of Hooks](https://legacy.reactjs.org/docs/hooks-rules.html)
+- [**Jest** - How to test React Hooks](https://blog.logrocket.com/test-react-hooks/)
 - [**React** - React Typescript Authentication example with Hooks](https://www.bezkoder.com/react-typescript-authentication-example/)
 - [**React** - Practical React Query](https://tkdodo.eu/blog/practical-react-query)
 - [**React** - React Query and Forms](https://tkdodo.eu/blog/react-query-and-forms)
