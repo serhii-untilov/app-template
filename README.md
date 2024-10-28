@@ -112,6 +112,9 @@ npm i --workspace api --save-dev typescript jest ts-jest @types/jest
 
 ``` bash
 npm i --workspace web --save-dev typescript jest ts-jest @types/jest
+npm i --workspace web react react-dom
+npm i --workspace web --save-dev @types/react
+npm i --workspace web --save-dev @types/react-dom
 npm i --workspace web react-router-dom
 npm i --workspace web react-error-boundary
 npm i --workspace web axios
@@ -133,21 +136,28 @@ npm i --workspace web --save-dev rollup-plugin-visualizer
 
 ``` bash
 npm i --workspace docs --save-dev typescript jest ts-jest @types/jest
-
+npm i --workspace docs react react-dom
+npm i --workspace docs --save-dev @types/react
+npm i --workspace docs react-router-dom
+npm i --workspace docs react-error-boundary
 ```
 
 ## @repo/ui - UI components library
 
 ``` bash
-npm i --workspace @repo/ui tailwindcss
-npm i --workspace @repo/ui --save-dev shadcn-ui@latest
-cd ./packages/ui/
-npx tailwindcss init --ts
-cd src
-touch globals.css
-cd ..
-
-cd ../..
+npm i --workspace @repo/ui react react-dom
+npm i --workspace @repo/ui --save-dev @types/react @types/react-dom
+npm i --workspace @repo/ui --save-dev tailwindcss
+npx --workspace @repo/ui tailwindcss init --ts
+touch ./packages/ui/src/globals.css
+touch ./packages/ui/vite.config.ts
+npx --workspace @repo/ui shadcn@latest init
+rm ./packages/ui/vite.config.ts
+npm i --workspace @repo/ui tailwindcss-animate class-variance-authority clsx tailwind-merge
+npm i --workspace @repo/ui lucide-react
+# Now, let’s add a Shadcn button to see how it integrates with our setup.
+# Follow these steps to include a Shadcn button component in your UI package:
+npx --workspace @repo/ui shadcn@latest add button
 
 ```
 

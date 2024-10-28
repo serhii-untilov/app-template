@@ -1,7 +1,8 @@
-import { Counter, Header } from '@repo/ui/components';
-import { setupCounter } from '@repo/ui/utils';
+import { Header } from '@repo/ui/components/header';
 import './style.css';
 import typescriptLogo from '/typescript.svg';
+import { Counter } from '@repo/ui/components/counter';
+import { setupCounter } from '@repo/ui/utils/counter';
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>

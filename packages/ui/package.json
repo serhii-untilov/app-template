@@ -2,8 +2,25 @@
     "name": "@repo/ui",
     "version": "0.0.0",
     "exports": {
-        "./components": "./src/components/index.ts",
-        "./utils": "./src/utils/index.ts"
+        "./globals.css": "./src/globals.css",
+        "./tailwind.config": "./tailwind.config.ts",
+        "./lib/*": "./src/lib/*.ts",
+        "./components/*": [
+            "./src/components/*.ts",
+            "./src/components/*.tsx"
+        ],
+        "./components/ui/*": [
+            "./src/components/ui/*.ts",
+            "./src/components/ui/*.tsx"
+        ],
+        "./utils/*": [
+            "./src/utils/*.ts",
+            "./src/utils/*.tsx"
+        ],
+        "./hooks/*": [
+            "./src/hooks/*.ts",
+            "./src/hooks/*.tsx"
+        ]
     },
     "license": "MIT",
     "scripts": {
@@ -12,7 +29,21 @@
     "devDependencies": {
         "@repo/eslint-config": "*",
         "@repo/typescript-config": "*",
+        "@types/react": "^18.3.12",
+        "@types/react-dom": "^18.3.1",
         "eslint": "^8.57.0",
+        "tailwindcss": "^3.4.14",
         "typescript": "^5.3.3"
+    },
+    "dependencies": {
+        "@radix-ui/react-slot": "^1.1.0",
+        "class-variance-authority": "^0.7.0",
+        "clsx": "^2.1.1",
+        "lucide-react": "^0.453.0",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "shadcn-ui": "^0.9.2",
+        "tailwind-merge": "^2.5.4",
+        "tailwindcss-animate": "^1.0.7"
     }
 }

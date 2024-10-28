@@ -1,21 +1,12 @@
-import { Counter, Header } from '@repo/ui/components';
-import { setupCounter } from '@repo/ui/utils';
 import './style.css';
-import typescriptLogo from '/typescript.svg';
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    ${Header({ title: 'Web' })}
-    <div class="card">
-      ${Counter()}
-    </div>
-  </div>
-`;
+import { createRoot } from 'react-dom/client';
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!);
+function NavigationBar() {
+    // TODO: Actually implement a navigation bar
+    return <h1>Hello from React!</h1>;
+}
+
+const domNode = document.getElementById('app');
+const root = createRoot(domNode);
+root.render(<NavigationBar />);
