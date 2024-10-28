@@ -111,6 +111,11 @@ npm i --workspace api --save-dev typescript jest ts-jest @types/jest
 ## web - frontend application
 
 ``` bash
+cd apps
+npm create vite@latest web -- --template react-swc-ts
+cd ..
+npm i --workspace web @repo/ui
+...
 npm i --workspace web --save-dev typescript jest ts-jest @types/jest
 npm i --workspace web react react-dom
 npm i --workspace web --save-dev @types/react
@@ -129,17 +134,9 @@ npm i --workspace web react-i18next i18next
 npm i --workspace web i18next-browser-languagedetector
 npm i --workspace web i18next-http-backend
 npm i --workspace web --save-dev rollup-plugin-visualizer
+npm i --workspace web --save-dev tailwindcss postcss autoprefixer
+npm i --workspace web --save-dev @vitejs/plugin-react-swc
 
-```
-
-## docs - frontend application
-
-``` bash
-npm i --workspace docs --save-dev typescript jest ts-jest @types/jest
-npm i --workspace docs react react-dom
-npm i --workspace docs --save-dev @types/react
-npm i --workspace docs react-router-dom
-npm i --workspace docs react-error-boundary
 ```
 
 ## @repo/ui - UI components library
@@ -158,6 +155,7 @@ npm i --workspace @repo/ui lucide-react
 # Now, let’s add a Shadcn button to see how it integrates with our setup.
 # Follow these steps to include a Shadcn button component in your UI package:
 npx --workspace @repo/ui shadcn@latest add button
+npm i --workspace @repo/ui --save-dev tailwindcss postcss autoprefixer
 
 ```
 

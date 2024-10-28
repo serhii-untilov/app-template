@@ -3,6 +3,8 @@
     "compilerOptions": {
         "baseUrl": ".",
         "jsx": "react",
+        "sourceMap": true,
+        "outDir": "./dist",
         "paths": {
             "@/*": ["./*"]
         }
