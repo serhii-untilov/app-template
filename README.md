@@ -115,6 +115,9 @@ cd apps
 npm create vite@latest web -- --template react-swc-ts
 cd ..
 npm i --workspace web @repo/ui
+npm i --workspace web -D tailwindcss postcss autoprefixer
+npx --workspace web tailwindcss init -p
+npm i --workspace web --save-dev @types/node
 ...
 npm i --workspace web --save-dev typescript jest ts-jest @types/jest
 npm i --workspace web react react-dom
