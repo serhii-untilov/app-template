@@ -115,17 +115,19 @@ cd apps
 npm create vite@latest web -- --template react-swc-ts
 cd ..
 npm i --workspace web @repo/ui
+# install shadcn
 npm i --workspace web -D tailwindcss postcss autoprefixer
 npx --workspace web tailwindcss init -p
 npm i --workspace web --save-dev @types/node
-...
-npm i --workspace web --save-dev typescript jest ts-jest @types/jest
-npm i --workspace web react react-dom
-npm i --workspace web --save-dev @types/react
-npm i --workspace web --save-dev @types/react-dom
-npm i --workspace web react-router-dom
-npm i --workspace web react-error-boundary
-npm i --workspace web axios
+npx --workspace web shadcn@latest init
+# test shadcn installation
+npx --workspace web shadcn@latest add button
+# login form
+npx --workspace web shadcn@latest add login-01
+# ...
+npm i --workspace web --save-dev typescript jest ts-jest @types/jest @types/react @types/react-dom
+npm i --workspace web react-router-dom react-error-boundary axios
+# ...
 npm i --workspace web @reduxjs/toolkit react-redux
 npm i --workspace web @tanstack/react-query
 npm i --workspace web @tanstack/react-query-devtools
@@ -139,26 +141,6 @@ npm i --workspace web i18next-http-backend
 npm i --workspace web --save-dev rollup-plugin-visualizer
 npm i --workspace web --save-dev tailwindcss postcss autoprefixer
 npm i --workspace web --save-dev @vitejs/plugin-react-swc
-
-```
-
-## @repo/ui - UI components library
-
-``` bash
-npm i --workspace @repo/ui react react-dom
-npm i --workspace @repo/ui --save-dev @types/react @types/react-dom
-npm i --workspace @repo/ui --save-dev tailwindcss
-npx --workspace @repo/ui tailwindcss init --ts
-touch ./packages/ui/src/globals.css
-touch ./packages/ui/vite.config.ts
-npx --workspace @repo/ui shadcn@latest init
-rm ./packages/ui/vite.config.ts
-npm i --workspace @repo/ui tailwindcss-animate class-variance-authority clsx tailwind-merge
-npm i --workspace @repo/ui lucide-react
-# Now, let’s add a Shadcn button to see how it integrates with our setup.
-# Follow these steps to include a Shadcn button component in your UI package:
-npx --workspace @repo/ui shadcn@latest add button
-npm i --workspace @repo/ui --save-dev tailwindcss postcss autoprefixer
 
 ```
 
