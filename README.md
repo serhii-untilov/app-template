@@ -124,6 +124,16 @@ npx --workspace web shadcn@latest init
 npx --workspace web shadcn@latest add button
 # login form
 npx --workspace web shadcn@latest add login-01
+npx --workspace web shadcn@latest add switch
+npm i --workspace web @radix-ui/react-tabs
+npx --workspace web shadcn@latest add checkbox
+# Tremor - a plugin that provides a basic reset for form styles that makes form elements easy to override with utilities.
+# https://tremor.so/docs/getting-started/installation/vite
+npm i --workspace web -D @tailwindcss/forms
+npm i --workspace web tailwind-variants clsx tailwind-merge @remixicon/react
+# Tremor - tabs
+npm i --workspace web @radix-ui/react-tabs
+
 # ...
 npm i --workspace web --save-dev typescript jest ts-jest @types/jest @types/react @types/react-dom
 npm i --workspace web react-router-dom react-error-boundary axios
