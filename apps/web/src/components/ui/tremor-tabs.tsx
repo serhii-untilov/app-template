@@ -36,7 +36,8 @@ const variantStyles: Record<TabsListVariant, string> = {
         // base
         "inline-flex items-center justify-center rounded-md p-1",
         // background color
-        "bg-stone-100 dark:bg-stone-900",
+        // "bg-stone-100 dark:bg-stone-900",
+        "bg-primary-foreground dark:bg-stone-900",
     ),
 }
 
@@ -87,7 +88,7 @@ function getVariantStyles(tabVariant: TabsListVariant) {
                 // ring
                 "ring-transparent",
                 // selected
-                "data-[state=active]:bg-white data-[state=active]:text-stone-900 data-[state=active]:shadow",
+                "data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow",
                 "data-[state=active]:dark:bg-stone-950 data-[state=active]:dark:text-stone-50",
                 // disabled
                 "data-[disabled]:pointer-events-none data-[disabled]:text-stone-400 data-[disabled]:opacity-50 data-[disabled]:dark:text-stone-600",
